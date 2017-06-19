@@ -1,0 +1,26 @@
+{
+  "name": "login_and_registration",
+  "version": "1.0.0",
+  "description": "Coding Dojo MEAN assignment Login and Registration",
+  "main": "server.js",
+  "scripts": {
+    "babel-node": "babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PJ",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "express-session": "^1.15.0",
+    "ejs": "^2.5.2",
+    "mongoose": "^4.7.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-latest": "^6.22.0"
+  }
+}
