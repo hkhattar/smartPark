@@ -30,13 +30,16 @@ module.exports = {
 		console.log('POST DATA',req.body);
 
 		var success = true
-
+		var error = {}
+		error = {message: 'all fields are required'}
 		
-		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, email:req.body.email, 
+		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
 			house_number:req.body.house_number, city:req.body.city, state: req.body.state, 
 			country: req.body.country, zip: req.body.zip});
+
 		console.log('user_id',user.id)
+
 		user.save(function(err,data){
 		
 			if(err){
