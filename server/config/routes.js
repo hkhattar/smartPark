@@ -8,6 +8,8 @@ module.exports = function(app){
 
 	app.post('/register', users.register);
 
+	app.post('/login', users.login);
+
 	app.get('/dashboard', function(req,res){
 		users.dashboard(req,res)
 	})

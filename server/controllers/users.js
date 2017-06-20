@@ -19,7 +19,7 @@ module.exports = {
     dashboard: function(req,res){
 
     	console.log("dashboard function sever controller users")
-    	res.render('dashboard')
+    	res.render('dashboard',{user:req.session.user.f_name})
 
 
     },
