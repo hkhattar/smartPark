@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
 
+
 module.exports = {
 
 	index: function(req,res){
@@ -15,17 +16,32 @@ module.exports = {
     	res.render('index')
     },
 
+    dashboard: function(req,res){
+
+    	console.log("dashboard function sever controller users")
+    	res.render('dashboard')
+
+
+    },
+
 
 	register: (req, res) =>{
 		console.log('inside register user server controller')
 		console.log('POST DATA',req.body);
+
+		var success = true
+
 		
-		var user = new User({email:req.body.email,password:req.body.password});
+		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, email:req.body.email, 
+			password:req.body.password, contact: req.body.contact, street:req.body.street, 
+			house_number:req.body.house_number, city:req.body.city, state: req.body.state, 
+			country: req.body.country, zip: req.body.zip});
 		console.log('user_id',user.id)
 		user.save(function(err,data){
 		
 			if(err){
 				console.log('ERR', err)
+				success = false
 			}
 			else{
 				 // res.json({
@@ -40,11 +56,11 @@ module.exports = {
 						console.log(err2);
 					} //req.session.save if
 									     });
-				res.json(data)
+				// res.json(success)
 				// _id: newuser._id
-				console.log('json',data)
+				console.log('json*****',data)
 				console.log('req.session.user',req.session.user)
-				
+				res.redirect('/dashboard')
 			}
 
 		})
