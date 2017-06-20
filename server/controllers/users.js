@@ -31,6 +31,21 @@ module.exports = {
 
 		var success = true
 		
+			     User.findOne({ //attempt to find a user in the DB based on the entered email address
+						u_name: req.body.u_name
+					}, (err, data) => {
+					if (err) { //if an error is returned...
+						console.log('131');
+					} else { //if there is no error...
+						if (data) { //and a user is returned (data is not null)...
+							
+							error = {already_username: 'Username already exists, please select another one'};
+							console.log('error.already_username',error.already_username)
+							res.json(error.already_username);
+				
+								  }
+							};
+						})
 		
 		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
@@ -43,6 +58,8 @@ module.exports = {
 		error = {message: 'all fields are required'}
 
 		console.log('error',error)
+
+	
 
 		var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$///regex to test email against
 		var pwordRegex =
@@ -74,32 +91,75 @@ module.exports = {
 			console.log('error.last',error.last)
 			res.json(error)
 		}
-		else if(req.body.u_name.length < 1)
+		else if(req.body.u_name.length < 4)
 		{
-		    error = {user: 'User name required'};
+		    error = {user: 'Username should be at least 4 characters long'};
 		    console.log('error.user',error.user)
 		    res.json(error)
 		          
 		}
-		else if (req.body.u_name < 4)
-		{
-			error = {user: 'Invalid username'}
-			console.log('error.user',error.user)
-			res.json(error)
-		}
+	
+		// else if (req.body.u_name.length > 3)
+		// {
+		// 	     User.findOne({ //attempt to find a user in the DB based on the entered email address
+		// 				u_name: req.body.u_name
+		// 			}, (err, data) => {
+		// 			if (err) { //if an error is returned...
+						// console.log('131');
+		// 			} else { //if there is no error...
+		// 				if (data) { //and a user is returned (data is not null)...
+							
+		// 					error = {already_username: 'Username already exists, please select another one'};
+		// 					console.log('error.already',error.already)
+		// 					res.json(error.already_username);
+				
+		// 						  }
+		// 					};
+		// 				})
+		// }
+
 		else if(req.body.email.length < 1)
 		{
+			console.log('132');
 		    error = {email: 'Email required'};
 		    console.log('error.email',error.email)
 		    res.json(error)
 		          
 		}
+		
 		else if (!req.body.email.match(emailRegex)) { //if the email entered does not match regex...
           error = {email: 'Invalid email'};
           console.log('error.email',error.email)
+
+
+
           res.json(error)
 
         }
+
+     //    else if (req.body.email.match(emailRegex)) { //if the email entered does not match regex...
+          
+
+     //      User.findOne({ //attempt to find a user in the DB based on the entered email address
+					// 	email: req.body.email
+					// }, (err, data) => {
+					// if (err) { //if an error is returned...
+					// 	console.log('131',err);
+					// } else { //if there is no error...
+					// 	if (data) { //and a user is returned (data is not null)...
+					// 		console.log(")))))))))))))))))))))))))))))))))))))))")
+					// 		error = {already: 'User already exists, please log in'};
+					// 		console.log('error.already',error.already)
+					// 		res.json(error.already);
+				
+					// 			  }
+					// 		};
+					// 	})
+
+          
+
+     //    }
+
         else if (!req.body.password.match(pwordRegex)) { //if the password entered does not match regex...
           error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
        		console.log('error.email',error.email)
@@ -119,7 +179,7 @@ module.exports = {
      //        	})
 
      			req.session.user = data; //create a session variable to store the returned data (new user)
-     			res.cookie('dash_user', data);
+     			// res.cookie('dash_user', data);
 				req.session.save(err2 => { //save session
 					if (err2) 
 					{ //if there's an error upon saving session...
@@ -146,7 +206,7 @@ module.exports = {
 			
 			console.log('req.body',req.body)
 			User.findOne({ //uses entered email to search for user in DB
-				email: req.body.email
+				u_name: req.body.u_name
 			}, (err, data) => {
 				if (err) { //if an error is thrown (model validations, etc)...
 					res.json(err); //return error to client-side
@@ -160,9 +220,10 @@ module.exports = {
 						console.log('data.password',data.password)
 						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
-							
-						
-							res.json(data); //return the user information to client-side
+							req.session.user = data
+							res.redirect('/dashboard')
+
+							// res.json(data); //return the user information to client-side
 						} else { //if password entered does NOT match that as retrieved from the DB...
 							res.json({ //return this error to client-side
 								'errorsFront': ["Email or Password incorrect"]
