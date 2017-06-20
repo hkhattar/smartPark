@@ -192,7 +192,8 @@ module.exports = {
 
 				console.log('json*****',data)
 				console.log('req.session.user',req.session.user)
-				res.redirect('/dashboard')
+				// res.redirect('/dashboard')
+				res.json(data)
 			}
 
 		})// end of user save
@@ -221,7 +222,8 @@ module.exports = {
 						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
 							req.session.user = data
-							res.redirect('/dashboard')
+							// res.redirect('/dashboard')
+							res.json(data)
 
 							// res.json(data); //return the user information to client-side
 						} else { //if password entered does NOT match that as retrieved from the DB...
