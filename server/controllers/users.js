@@ -30,8 +30,7 @@ module.exports = {
 		console.log('POST DATA',req.body);
 
 		var success = true
-		var error = {}
-		error = {message: 'all fields are required'}
+		
 		
 		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
@@ -40,7 +39,75 @@ module.exports = {
 
 		console.log('user_id',user.id)
 
-		user.save(function(err,data){
+		var error = {}// error object, it will have all the key value pairs
+		error = {message: 'all fields are required'}
+
+		console.log('error',error)
+
+		var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$///regex to test email against
+		var pwordRegex =
+      /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{:;'?/><.;,])(?!.*\s).*$/; //regex to test password against
+		
+		if(req.body.f_name.length < 1)
+		{
+		    error = {first: 'First name required'};
+		    console.log('error.first',error.first)
+		    res.json(error)
+		          
+		}
+		else if (req.body.f_name < 2)
+		{
+			error = {first: 'Invalid first name'}
+			console.log('error.first',error.first)
+			res.json(error)
+		}
+		else if(req.body.l_name.length < 1)
+		{
+		    error = {last: 'Last name required'};
+		    console.log('error.last',error.last)
+		    res.json(error)
+		          
+		}
+		else if (req.body.l_name < 2)
+		{
+			error = {last: 'Invalid last name'}
+			console.log('error.last',error.last)
+			res.json(error)
+		}
+		else if(req.body.u_name.length < 1)
+		{
+		    error = {user: 'User name required'};
+		    console.log('error.user',error.user)
+		    res.json(error)
+		          
+		}
+		else if (req.body.u_name < 4)
+		{
+			error = {user: 'Invalid username'}
+			console.log('error.user',error.user)
+			res.json(error)
+		}
+		else if(req.body.email.length < 1)
+		{
+		    error = {email: 'Email required'};
+		    console.log('error.email',error.email)
+		    res.json(error)
+		          
+		}
+		else if (!req.body.email.match(emailRegex)) { //if the email entered does not match regex...
+          error = {email: 'Invalid email'};
+          console.log('error.email',error.email)
+          res.json(error)
+
+        }
+        else if (!req.body.password.match(pwordRegex)) { //if the password entered does not match regex...
+          error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
+       		console.log('error.email',error.email)
+       		res.json(error)
+        }
+        else{
+
+        	user.save(function(err,data){
 		
 			if(err){
 				console.log('ERR', err)
@@ -61,12 +128,17 @@ module.exports = {
 									     });
 				// res.json(success)
 				// _id: newuser._id
+				
+
 				console.log('json*****',data)
 				console.log('req.session.user',req.session.user)
 				res.redirect('/dashboard')
 			}
 
-		})
+		})// end of user save
+
+        }// end of else 
+		
 
 		
 	},
