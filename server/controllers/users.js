@@ -47,7 +47,7 @@ module.exports = {
 							};
 						})
 		
-		var user = new User({f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
+		var user = new User({success: 'true',f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
 			house_number:req.body.house_number, city:req.body.city, state: req.body.state, 
 			country: req.body.country, zip: req.body.zip});
@@ -193,7 +193,7 @@ module.exports = {
 				console.log('json*****',data)
 				console.log('req.session.user',req.session.user)
 				// res.redirect('/dashboard')
-				res.json(data)
+				res.json(success)
 			}
 
 		})// end of user save

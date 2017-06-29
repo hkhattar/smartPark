@@ -14,6 +14,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new mongoose.Schema({
 	
 	
+	success:{type:Boolean},
 	f_name:{type:String},
 	l_name:{type:String},
 	u_name:{type:String},
@@ -25,7 +26,7 @@ var UserSchema = new mongoose.Schema({
 	city:{type:String},
 	state:{type:String},
 	country:{type:String},
-	zip_code:{type:String},
+	zip_code:{type:String}
 	
 	
 });
