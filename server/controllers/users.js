@@ -217,7 +217,7 @@ module.exports = {
 				console.log('json*****',data)
 				console.log('req.session.user',req.session.user)
 				// res.redirect('/dashboard')
-				res.json(success)
+				res.json(data)
 			}
 
 		})// end of user save
