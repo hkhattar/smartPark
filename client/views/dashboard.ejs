@@ -1,7 +1,24 @@
 <h1>Welcome</h1>
 
-<%=user%>
+<!-- <%=users%> -->
 
 <br><br> <a href="">Book your spot</a> <br> <br>
 
 <br><br> <a href="">Find a spot</a> <br><br>
+
+
+<% for (var i in users){%>
+	<ul>
+		<li>First Name: <%= users[i].f_name %></li>
+		<li>Last Name: <%= users[i].l_name %></li>
+
+
+	</ul>
+	
+
+<%}
+
+ %> 
+
+
+					

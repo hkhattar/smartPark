@@ -19,7 +19,31 @@ module.exports = {
     dashboard: function(req,res){
 
     	console.log("dashboard function sever controller users")
-    	res.render('dashboard',{user:req.session.user.f_name})
+
+    	  var users = 'hi';
+    	  User.find({ //attempt to find a user in the DB based on the entered email address
+						
+					}, (err, data) => {
+					if (err) { //if an error is returned...
+						console.log('131');
+					} else { //if there is no error...
+						if (data) { //and a user is returned (data is not null)...
+							
+							
+							console.log('users1',users)
+							users = data
+							// console.log('users2',users)
+							res.render('dashboard',{users:users})
+
+
+				
+								  }
+							};
+						})
+			// var users = User.find({})
+
+    	// console.log('users3',users)
+    	// res.render('dashboard',{user:'123'})
 
 
     },
