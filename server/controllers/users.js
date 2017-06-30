@@ -71,7 +71,7 @@ module.exports = {
 					// 		};
 					// 	})
 		
-		var user = new User({success: 'true',f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
+		var user = new User({success: 'true',f_name:req.body.f_name, l_name:req.body.l_name,  email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
 			house_number:req.body.house_number, city:req.body.city, state: req.body.state, 
 			country: req.body.country, zip: req.body.zip});
@@ -115,13 +115,13 @@ module.exports = {
 			console.log('error.last',error.last)
 			res.json(error)
 		}
-		else if(req.body.u_name.length < 4)
-		{
-		    error = {user: 'Username should be at least 4 characters long'};
-		    console.log('error.user',error.user)
-		    res.json(error)
+		// else if(req.body.u_name.length < 4)
+		// {
+		//     error = {user: 'Username should be at least 4 characters long'};
+		//     console.log('error.user',error.user)
+		//     res.json(error)
 		          
-		}
+		// }
 	
 		// else if (req.body.u_name.length > 3)
 		// {
@@ -161,6 +161,15 @@ module.exports = {
           res.json(error)
 
         }
+
+        else if(req.body.password.length < 1)
+		{
+			console.log('132');
+		    error = {password: 'Password required'};
+		    console.log('error.password',error.password)
+		    res.json(error)
+		          
+		}
 
         // else if (req.body.email.match(emailRegex)) { //if the email entered does match regex...
           
@@ -205,6 +214,38 @@ module.exports = {
 							res.json(error.already);
 				
 								  }
+								  else{
+								  				user.save(function(err,data){
+		
+												if(err){
+													console.log('ERR', err)
+													success = false
+												}
+												else{
+													 // res.json({
+									     //            _id: user._id
+									     //        	})
+
+									     			req.session.user = data; //create a session variable to store the returned data (new user)
+									     			// res.cookie('dash_user', data);
+													req.session.save(err2 => { //save session
+														if (err2) 
+														{ //if there's an error upon saving session...
+															console.log(err2);
+														} //req.session.save if
+																		     });
+													// res.json(success)
+													// _id: newuser._id
+													
+
+													console.log('json*****',data)
+													console.log('req.session.user',req.session.user)
+													// res.redirect('/dashboard')
+													res.json(data)
+												}
+
+											})// end of user save
+																	  }
 							};
 						})
 
@@ -216,36 +257,7 @@ module.exports = {
         		}
 
 
-        	user.save(function(err,data){
-		
-			if(err){
-				console.log('ERR', err)
-				success = false
-			}
-			else{
-				 // res.json({
-     //            _id: user._id
-     //        	})
-
-     			req.session.user = data; //create a session variable to store the returned data (new user)
-     			// res.cookie('dash_user', data);
-				req.session.save(err2 => { //save session
-					if (err2) 
-					{ //if there's an error upon saving session...
-						console.log(err2);
-					} //req.session.save if
-									     });
-				// res.json(success)
-				// _id: newuser._id
-				
-
-				console.log('json*****',data)
-				console.log('req.session.user',req.session.user)
-				// res.redirect('/dashboard')
-				res.json(data)
-			}
-
-		})// end of user save
+     
 
         }// end of else 
 		
@@ -257,7 +269,7 @@ module.exports = {
 			var success = true
 			console.log('req.body',req.body)
 			User.findOne({ //uses entered email to search for user in DB
-				u_name: req.body.u_name
+				email: req.body.email
 			}, (err, data) => {
 				if (err) { //if an error is thrown (model validations, etc)...
 					res.json(err); //return error to client-side
