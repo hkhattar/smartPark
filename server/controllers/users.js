@@ -55,21 +55,21 @@ module.exports = {
 
 		var success = true
 		
-			     User.findOne({ //attempt to find a user in the DB based on the entered email address
-						u_name: req.body.u_name
-					}, (err, data) => {
-					if (err) { //if an error is returned...
-						console.log('131');
-					} else { //if there is no error...
-						if (data) { //and a user is returned (data is not null)...
+			  //    User.findOne({ //attempt to find a user in the DB based on the entered email address
+					// 	u_name: req.body.u_name
+					// }, (err, data) => {
+					// if (err) { //if an error is returned...
+					// 	console.log('131');
+					// } else { //if there is no error...
+					// 	if (data) { //and a user is returned (data is not null)...
 							
-							error = {already_username: 'Username already exists, please select another one'};
-							console.log('error.already_username',error.already_username)
-							res.json(error.already_username);
+					// 		error = {already_username: 'Username already exists, please select another one'};
+					// 		console.log('error.already_username',error.already_username)
+					// 		res.json(error.already_username);
 				
-								  }
-							};
-						})
+					// 			  }
+					// 		};
+					// 	})
 		
 		var user = new User({success: 'true',f_name:req.body.f_name, l_name:req.body.l_name, u_name:req.body.u_name, email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
@@ -125,11 +125,12 @@ module.exports = {
 	
 		// else if (req.body.u_name.length > 3)
 		// {
+		// 	     console.log('inside else if u_name > 3')
 		// 	     User.findOne({ //attempt to find a user in the DB based on the entered email address
 		// 				u_name: req.body.u_name
 		// 			}, (err, data) => {
 		// 			if (err) { //if an error is returned...
-						// console.log('131');
+		// 				console.log('131');
 		// 			} else { //if there is no error...
 		// 				if (data) { //and a user is returned (data is not null)...
 							
@@ -161,9 +162,9 @@ module.exports = {
 
         }
 
-     //    else if (req.body.email.match(emailRegex)) { //if the email entered does not match regex...
+        // else if (req.body.email.match(emailRegex)) { //if the email entered does match regex...
           
-
+        // 	console.log('inside else if email match regex')
      //      User.findOne({ //attempt to find a user in the DB based on the entered email address
 					// 	email: req.body.email
 					// }, (err, data) => {
@@ -172,7 +173,7 @@ module.exports = {
 					// } else { //if there is no error...
 					// 	if (data) { //and a user is returned (data is not null)...
 					// 		console.log(")))))))))))))))))))))))))))))))))))))))")
-					// 		error = {already: 'User already exists, please log in'};
+					// 		error = {already: 'Email already exists, please log in'};
 					// 		console.log('error.already',error.already)
 					// 		res.json(error.already);
 				
@@ -182,14 +183,38 @@ module.exports = {
 
           
 
-     //    }
+        // }
 
-        else if (!req.body.password.match(pwordRegex)) { //if the password entered does not match regex...
-          error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
-       		console.log('error.email',error.email)
-       		res.json(error)
-        }
+        // else if (!req.body.password.match(pwordRegex)) { //if the password entered does not match regex...
+        //   error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
+       	// 	console.log('error.email',error.email)
+       	// 	res.json(error)
+        // }
         else{
+        		if (req.body.password.match(pwordRegex)) {
+        			User.findOne({ //attempt to find a user in the DB based on the entered email address
+						email: req.body.email
+					}, (err, data) => {
+					if (err) { //if an error is returned...
+						console.log('131',err);
+					} else { //if there is no error...
+						if (data) { //and a user is returned (data is not null)...
+							console.log(")))))))))))))))))))))))))))))))))))))))")
+							error = {already: 'Email already exists, please log in'};
+							console.log('error.already',error.already)
+							res.json(error.already);
+				
+								  }
+							};
+						})
+
+        		}
+        		else{
+        			error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
+       				console.log('error.email',error.email)
+       				res.json(error)
+        		}
+
 
         	user.save(function(err,data){
 		
@@ -229,6 +254,7 @@ module.exports = {
 	},
 		login: (req, res) => { //logs user in based on entered login information
 			
+			var success = true
 			console.log('req.body',req.body)
 			User.findOne({ //uses entered email to search for user in DB
 				u_name: req.body.u_name
@@ -237,8 +263,10 @@ module.exports = {
 					res.json(err); //return error to client-side
 				} else { //if there is no error...
 					if (!data) { //but no user information is retrieved...
+						success = false
 						res.json({
-							'errorsFront': ["Email or password incorrect"] //return this error to client-side
+							success
+							// 'errorsFront': ["Email or password incorrect"] //return this error to client-side
 						});
 					} else { //if user information IS retrieved...
 						console.log('req.body.password',req.body.password)
@@ -251,8 +279,9 @@ module.exports = {
 
 							// res.json(data); //return the user information to client-side
 						} else { //if password entered does NOT match that as retrieved from the DB...
+							success = false
 							res.json({ //return this error to client-side
-								'errorsFront': ["Email or Password incorrect"]
+								success
 							});
 						// } //password no matchy else
 					} //if user information is retrieved else
