@@ -71,7 +71,7 @@ module.exports = {
 					// 		};
 					// 	})
 		
-		var user = new User({success: 'true',f_name:req.body.f_name, l_name:req.body.l_name,  email:req.body.email, 
+		var user = new User({success: true,f_name:req.body.f_name, l_name:req.body.l_name,  email:req.body.email, 
 			password:req.body.password, contact: req.body.contact, street:req.body.street, 
 			house_number:req.body.house_number, city:req.body.city, state: req.body.state, 
 			country: req.body.country, zip: req.body.zip});
@@ -91,27 +91,27 @@ module.exports = {
 		
 		if(req.body.f_name.length < 1)
 		{
-		    error = {first: 'First name required'};
+		    error = {first: 'First name required',success: false};
 		    console.log('error.first',error.first)
 		    res.json(error)
 		          
 		}
 		else if (req.body.f_name < 2)
 		{
-			error = {first: 'Invalid first name'}
+			error = {first: 'Invalid first name',success: false}
 			console.log('error.first',error.first)
 			res.json(error)
 		}
 		else if(req.body.l_name.length < 1)
 		{
-		    error = {last: 'Last name required'};
+		    error = {last: 'Last name required',success: false};
 		    console.log('error.last',error.last)
 		    res.json(error)
 		          
 		}
 		else if (req.body.l_name < 2)
 		{
-			error = {last: 'Invalid last name'}
+			error = {last: 'Invalid last name',success: false}
 			console.log('error.last',error.last)
 			res.json(error)
 		}
@@ -146,7 +146,7 @@ module.exports = {
 		else if(req.body.email.length < 1)
 		{
 			console.log('132');
-		    error = {email: 'Email required'};
+		    error = {email: 'Email required',success: false};
 		    console.log('error.email',error.email)
 		    res.json(error)
 		          
@@ -165,7 +165,7 @@ module.exports = {
         else if(req.body.password.length < 1)
 		{
 			console.log('132');
-		    error = {password: 'Password required'};
+		    error = {password: 'Password required',success: false};
 		    console.log('error.password',error.password)
 		    res.json(error)
 		          
@@ -209,7 +209,7 @@ module.exports = {
 					} else { //if there is no error...
 						if (data) { //and a user is returned (data is not null)...
 							console.log(")))))))))))))))))))))))))))))))))))))))")
-							error = {already: 'Email already exists, please log in'};
+							error = {already: 'Email already exists, please log in',success: false};
 							console.log('error.already',error.already)
 							res.json(error.already);
 				
@@ -251,7 +251,7 @@ module.exports = {
 
         		}
         		else{
-        			error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character' }
+        			error = {password: 'Password does not meet minimum requirements:Must be at least 8 characters in length and include at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character',success: false }
        				console.log('error.email',error.email)
        				res.json(error)
         		}

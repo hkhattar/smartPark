@@ -14,7 +14,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new mongoose.Schema({
 	
 	
-	success:{type:Boolean},
+	success:{type:Boolean, default: false},
 	f_name:{type:String},
 	l_name:{type:String},
 	email:{type:String},
