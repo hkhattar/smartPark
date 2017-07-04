@@ -12,6 +12,8 @@ module.exports = function(app){
 
 	app.get('/dashboard', function(req,res){
 		users.dashboard(req,res)
-	})
+	});
+
+	app.get('/checksesh', users.checkSesh); //checks to see if session exists (is user logged in?)
 
 }

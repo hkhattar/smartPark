@@ -10,8 +10,10 @@
   "author": "PJ",
   "license": "ISC",
   "dependencies": {
+    "angular-cookies": "^1.5.8",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.15.0",
     "ejs": "^2.5.2",
