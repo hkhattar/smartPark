@@ -32,9 +32,9 @@ module.exports = {
 							
 							console.log('users1',users)
 							users = data
-							// console.log('users2',users)
-							res.render('dashboard',{users:users})
-
+							console.log('users2',users)
+							// res.render('dashboard',{users:users})
+							res.json(users)
 
 				
 								  }

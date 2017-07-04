@@ -21,6 +21,17 @@ app.factory('user_factory',function($http){
           });
         }
 
+         factory.index_user = function(callback)
+    {
+      $http.get('/users').then(function(returned_data)
+      {
+        if(typeof(callback) == 'function')
+        {
+          callback(returned_data.data);
+        }
+      })
+    }
+
 
      
 
@@ -44,6 +55,35 @@ app.factory('user_factory',function($http){
       
         return logged_in_user;
       }
+
+      factory.login = function(user, cb) { //logs user in based on entered information
+        // console.log('inside factory login')
+      let errors = []; //creates empty array to store errors
+      // if (!user || !user.email ||
+      //   !user.password) { //if any fields are left blank...
+      //   errors.push('Please fill in all fields'); //pushes error to errors array
+      // } else { //if all fields are filled in...
+        // console.log('user',user)
+        $http.post('/login',user).then(function(response)
+        { //execute post request passing user object
+          // console.log('user',user)
+          // console.log('response',response)
+          // console.log('inside http function factory login ')
+          if (typeof(cb) == 'function') { //if cb is a function...
+            cb(response.data); //invoke cb and pass retrived information (logged in user)
+          }
+        }, err => { //if an error is thrown during post request...
+          cb(err); //invoke cb and pass error
+        });
+      // }
+      if (errors.length > 0) { //if the errors array is not empty (fields were left empty)...
+        if (typeof(cb) == 'function') { //and cb is a function...
+          cb({
+            'errorsFront': errors //invoke cb and pass errors array
+          });
+        }
+      }
+    }
        
         return factory;
     })

@@ -32,6 +32,11 @@ $routeProvider
            controller: 'user_controller'
         })
 
+        .when('/users',{
+          templateUrl: 'partials/users.html',
+          controller: 'user_controller'
+        })
+
         
 
 });
