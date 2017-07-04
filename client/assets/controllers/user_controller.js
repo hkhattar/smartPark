@@ -71,12 +71,13 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
 
         $scope.index_user = function(){
         user_factory.index_user(function(data){
-          $scope.users = 'hhii';
+          console.log('data',data)
+          $scope.users = 'lll';
           console.log('$scope.users',$scope.users)
           // $scope.user = {};
         })
       }
-      $scope.users = 'hhii';
+      // $scope.users = 'hhii';
       function setUsers(data)
       {
         logged_in_user = data;
@@ -97,7 +98,9 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       $scope.logErrors = []; //clear out all previous login errors
       // console.log('$scope.loginUser',$scope.loginUser)
       user_factory.login($scope.loginUser, data => { //run the userFactory.login method and pass the entered user information and a callback function
+        
         if (data.errors) { //if the returned data has an errors key...
+          
           for (let key in data.errors) { //for every key in the data.errors...
             $scope.logErrors.push(data.errors[key].message); //push these errors to the logErrors array
           }
@@ -107,7 +110,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
           $scope.logErrors = data.errorsFront; //set logErrors to equal the returned errors...
           // second.focus(); //put the user's cursor back on the first input in login
         } else { //if no errors are returned...
-          $location.url('/'); //send the user to the dashboard with their respective user id
+          $location.url('/dashboard'); //send the user to the dashboard with their respective user id
         } //if/else
       }); //userFactory.login
     }; //$scope.login

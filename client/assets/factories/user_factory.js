@@ -25,6 +25,7 @@ app.factory('user_factory',function($http){
     {
       $http.get('/users').then(function(returned_data)
       {
+        console.log('returned_data',returned_data)
         if(typeof(callback) == 'function')
         {
           callback(returned_data.data);
@@ -57,7 +58,7 @@ app.factory('user_factory',function($http){
       }
 
       factory.login = function(user, cb) { //logs user in based on entered information
-        // console.log('inside factory login')
+        console.log('inside factory login')
       let errors = []; //creates empty array to store errors
       // if (!user || !user.email ||
       //   !user.password) { //if any fields are left blank...
@@ -66,7 +67,7 @@ app.factory('user_factory',function($http){
         // console.log('user',user)
         $http.post('/login',user).then(function(response)
         { //execute post request passing user object
-          // console.log('user',user)
+          console.log('user',user)
           // console.log('response',response)
           // console.log('inside http function factory login ')
           if (typeof(cb) == 'function') { //if cb is a function...
