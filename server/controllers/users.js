@@ -366,7 +366,9 @@ module.exports = {
 							res.cookie('dash_user', data);
 							
 							console.log('data+++++++++++++++',data)
-							res.json({success}); //return the user information to client-side
+							console.log('success',success)
+
+							res.json(data); //return the user information to client-side
 
 						} else { //if password entered does NOT match that as retrieved from the DB...
 							success = false
