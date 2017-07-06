@@ -33,12 +33,12 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       {
         $scope.error = {message: 'All fields are required'};
        
-        if($scope.user.first_name.length < 2)
+        if($scope.user.f_name.length < 2)
         {
           $scope.error = {first: 'Invalid first name'};
           
         }
-        else if($scope.user.last_name.length < 2)
+        else if($scope.user.l_name.length < 2)
         {
           $scope.error = {last: 'Invalid last name'};
           

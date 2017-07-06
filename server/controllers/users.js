@@ -269,7 +269,7 @@ module.exports = {
 		console.log('inside register user server controller')
 		console.log('POST DATA',req.body);
 		
-		var user = new User({success:true,f_name:req.body.first_name,l_name:req.body.last_name,email:req.body.email,password:req.body.password});
+		var user = new User({success:true,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:req.body.password});
 		console.log('user_id',user.id)
 		user.save(function(err,data){
 		
