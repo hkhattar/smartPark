@@ -268,40 +268,64 @@ module.exports = {
 	register: (req, res) =>{
 		console.log('inside register user server controller')
 		console.log('POST DATA',req.body);
+		var success = false
 		
-		var user = new User({success:true,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:req.body.password});
-		console.log('user_id',user.id)
-		user.save(function(err,data){
+		// console.log('user_id',user.id)
 		
-			if(err){
-				console.log('ERR', err)
-			}
-			else{
-				 // res.json({
-     //            _id: user._id
-     //        	})
-
-     			req.session.user = data; //create a session variable to store the returned data (new user)
-     			console.log('data',data)
-     			res.cookie('dash_user', data);
-     			
-
-				req.session.save(err2 => { //save session
-					if (err2) 
-					{ //if there's an error upon saving session...
-						console.log(err2);
-					} //req.session.save if
-									     });
-				res.json(data)
-				// _id: newuser._id
-				console.log('json',data)
-				console.log('req.session.user',req.session.user)
+		User.findOne({ //attempt to find a user in the DB based on the entered email address
+						email: req.body.email
+					}, (err, data) => {
+					if (err) { //if an error is returned...
+						console.log('131',err);
+					} else { //if there is no error...
+						if (data) { //and a user is returned (data is not null)...
+							console.log(")))))))))))))))))))))))))))))))))))))))")
+							error = {already: 'Email already exists, please log in',success: success};
+							console.log('error',error)
+							res.json(error);
 				
-			}
+								  }
 
-		})
+						else{
+							success = true
+							var user = new User({success:success,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:req.body.password});
+							user.save(function(err,data){
+		
+								if(err){
+									console.log('ERR', err)
+										}
+								else
+								{
+								 // res.json({
+				     //            _id: user._id
+				     //        	})
+
+				     				req.session.user = data; //create a session variable to store the returned data (new user)
+				     				console.log('data',data)
+				     				res.cookie('dash_user', data);
+				     			
+
+									req.session.save(err2 => { //save session
+										if (err2) 
+										{ //if there's an error upon saving session...
+											console.log(err2);
+										} //req.session.save if
+													     });
+									res.json(data)
+									// _id: newuser._id
+									console.log('json',data)
+									console.log('req.session.user',req.session.user)
+								
+								}
+
+							})//end of user save	
+
+							}// end of else , if email is not present in the database
+		
 
 		
+						}//end of if there is not error
+				})//end of user.find one
 	},
 		// login: (req, res) => { //logs user in based on entered login information
 			
