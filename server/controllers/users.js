@@ -343,6 +343,7 @@ module.exports = {
 
 		login: (req, res) => { //logs user in based on entered login information
 			
+			var success = true
 			console.log('req.body',req.body)
 			User.findOne({ //uses entered email to search for user in DB
 				email: req.body.email
@@ -351,21 +352,29 @@ module.exports = {
 					res.json(err); //return error to client-side
 				} else { //if there is no error...
 					if (!data) { //but no user information is retrieved...
-						res.json({
-							'errorsFront': ["Email or password incorrect"] //return this error to client-side
-						});
+						success = false
+						console.log('success',success)
+
+						// res.json({
+						// 	'errorsFront': ["Email or password incorrect"] //return this error to client-side
+						// });
+						res.json({success})
 					} else { //if user information IS retrieved...
 						console.log('req.body.password',req.body.password)
 						console.log('data.password',data.password)
 						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
 							
-						
+							console.log('data+++++++++++++++',data)
 							res.json(data); //return the user information to client-side
+
 						} else { //if password entered does NOT match that as retrieved from the DB...
-							res.json({ //return this error to client-side
-								'errorsFront': ["Email or Password incorrect"]
-							});
+							success = false
+							console.log('success',success)
+							res.json({success})
+							// res.json({ //return this error to client-side
+							// 	'errorsFront': ["Email or Password incorrect"]
+							// });
 						// } //password no matchy else
 					} //if user information is retrieved else
 				} //if there is no error when searching for user else
