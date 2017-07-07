@@ -379,10 +379,11 @@ module.exports = {
 						success = false
 						console.log('success',success)
 
-						// res.json({
-						// 	'errorsFront': ["Email or password incorrect"] //return this error to client-side
-						// });
-						res.json({success})
+						res.json({
+							'success' : success,
+							'errorsFront': ["Email or password incorrect"] //return this error to client-side
+						});
+						// res.json({success})
 					} else { //if user information IS retrieved...
 						console.log('req.body.password',req.body.password)
 						console.log('data.password',data.password)
@@ -397,10 +398,11 @@ module.exports = {
 						} else { //if password entered does NOT match that as retrieved from the DB...
 							success = false
 							console.log('success',success)
-							res.json({success})
-							// res.json({ //return this error to client-side
-							// 	'errorsFront': ["Email or Password incorrect"]
-							// });
+							// res.json({success})
+							res.json({ //return this error to client-side
+								'success' : success,
+								'errorsFront': ["Email or Password incorrect"]
+							});
 						// } //password no matchy else
 					} //if user information is retrieved else
 				} //if there is no error when searching for user else
