@@ -37,6 +37,16 @@ $routeProvider
           controller: 'user_controller'
         })
 
+        .when('/spot/new',{
+          templateUrl: 'partials/new_spot.html',
+          controller: 'user_controller'
+        })
+
+        .when('/spots',{
+          templateUrl: 'partials/spots.html',
+          controller: 'user_controller'
+        })
+
         
 
 });

@@ -3,6 +3,7 @@ app.factory('user_factory',function($http){
 
         var factory = {};
         var logged_in_user = {};
+        var error = {}
 
         factory.register_user = function(user,callback)
         {
@@ -10,13 +11,14 @@ app.factory('user_factory',function($http){
           $http.post('/register', user).then(function(returned_data)
           {
             // console.log('user',user)
-            // console.log('returned_data in belt factory', returned_data.data)
+            console.log('returned_data in belt factory', returned_data.data)
             logged_in_user = returned_data.data;
+            error = returned_data.data
             // console.log('logged_in_user inside register_user belt factory',logged_in_user)
             if (typeof(callback) == 'function')
             {
               // console.log('user in belt factory', user)
-              callback(user);
+              callback(returned_data.data);
             }
           });
         }
@@ -57,6 +59,12 @@ app.factory('user_factory',function($http){
         return logged_in_user;
       }
 
+      factory.log_get_error = function(){
+        console.log('inside belt factory log_get_error','error',error)
+      
+        return error;
+      }
+
       factory.login = function(user, cb) { //logs user in based on entered information
         console.log('inside factory login')
       let errors = []; //creates empty array to store errors
@@ -84,6 +92,78 @@ app.factory('user_factory',function($http){
           });
         }
       }
+    }
+
+
+      // factory.add_spot = function(newSpot,user,callback)
+      // {
+      //   console.log('inside add spot factory')
+      //   console.log('user',user)
+      //   $http.post('/spots', {user: user, spot: newSpot}).then(function(returned_data)
+      //   {
+      //     // console.log('newQuestion',newQuestion)
+      //     if (typeof(callback) == 'function')
+      //     {
+      //       callback(returned_data.data);
+      //       console.log('returned_data',returned_data)
+      //     }
+      //   });
+      // }
+
+      factory.geocode = function(newSpot, location, user, callback)
+      {
+        console.log('inside user_factory geocode ')
+        console.log('newSpot in factory', newSpot)
+
+        console.log('location in factory', location)
+
+
+          axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+          params:{
+          address: location,
+          key: 'AIzaSyBgKwURsd4XhAq0GBTGTDOToFu1S_lFwkk'
+          } // end of params
+          })// end of axios.get
+          .then(function(response)
+          {
+          //log full response
+          callback(response.data.results[0].formatted_address)
+          
+          console.log(response.data.results[0].formatted_address,'response')
+          var lat = response.data.results[0].geometry.location.lat;
+          var lng = response.data.results[0].geometry.location.lng;
+          console.log(lat,lng)
+
+          $http.post('/spots',{user: user, spot:newSpot, lat:lat, lng: lng}).then(function(returned_data)
+          {
+            if (typeof(callback) == 'function')
+          {
+            callback(returned_data.data);
+            console.log('returned_data',returned_data)
+          }//end of if type of callback is function
+          })//end of http post
+
+          })
+          .catch(function(error){
+          alert('Invalid address')
+          console.log(error)
+          })
+
+
+
+   
+      }
+
+//get all the spots
+         factory.index_spot = function(callback)
+    {
+      $http.get('/all_spots').then(function(returned_data)
+      {
+        if(typeof(callback) == 'function')
+        {
+          callback(returned_data.data);
+        }
+      })
     }
        
         return factory;

@@ -25,8 +25,8 @@ var UserSchema = new mongoose.Schema({
 	city:{type:String},
 	state:{type:String},
 	country:{type:String},
-	zip_code:{type:String}
-	
+	zip_code:{type:String},
+	_spots:[{type:Schema.Types.ObjectId, ref: 'Spot'}],
 	
 });
 

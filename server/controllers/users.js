@@ -10,6 +10,17 @@ var User = mongoose.model('User');
 
 module.exports = {
 
+	
+
+	index_spots: function(req,res){
+		// console.log("inside question index in routes");
+		Spot.find({},false,true).exec(function(err,questions){
+
+			console.log('spots',spots);
+			res.json(spots);
+		});
+	},
+
 	index: function(req,res){
 	
     	console.log("index function sever controller users")

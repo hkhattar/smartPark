@@ -1,4 +1,5 @@
 var users = require('../controllers/users.js')//we can get functions from friends
+var spots = require('../controllers/spots.js')
 module.exports = function(app){
 	app.get('/', function(req, res) {
 		// console.log('/users')
@@ -17,4 +18,8 @@ module.exports = function(app){
 	app.get('/checksesh', users.checkSesh); //checks to see if session exists (is user logged in?)
 
     app.get('/logout', users.logout); //logs user out
+
+    app.post('/spots', spots.create) ;
+
+    // app.get('/all_spots',spots.index_spots);
 }

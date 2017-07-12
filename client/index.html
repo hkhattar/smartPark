@@ -7,6 +7,10 @@
   <title>index</title>
     <!-- <script src="jquery-3.1.1.min.js"></script> -->
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+  <!-- bootstrap 4 -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+
   <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.js"></script>
@@ -27,6 +31,101 @@
      
 </head>
 <body>
+
+
+<!-- <h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
+ <form id="location-form">
+      <input placeholder='Address' type="text" id="location-input" class="form-control form-control-lg">
+       
+
+      <input placeholder='Contact' type="text" id="contact" class="form-control form-control-lg">
+      <input placeholder='Valid Driver License Number for Address Proof' type="text" id="contact" class="form-control form-control-lg">
+      <br>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  <div class='card-block' id = "formatted-address"> </div>
+  
+  <div class= 'card-block' id= "address-components"></div>
+  <div class= 'card-block' id= "geometry"></div>
+
+
+
+<script>
+
+
+// Get location form
+    var locationForm = document.getElementById('location-form');
+
+    // Listen for submiot
+    locationForm.addEventListener('submit', geocode);
+
+
+  function geocode(e){
+    e.preventDefault();
+    // var location = '1550 Technology Drive San Jose'
+    var location = document.getElementById("location-input").value;
+    // var location = document. getElementsByClassName('zip_code').value;
+
+    // var location = document.querySelectorAll("#street, #zip_code,#city,#state");
+    console.log(")))))))))))))) ",location)
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+      params:{
+        address: location,
+        key: 'AIzaSyBgKwURsd4XhAq0GBTGTDOToFu1S_lFwkk'
+      } // end of params
+    })// end of axios.get
+    .then(function(response){
+      //log full response
+      console.log(response)
+      //formatted address
+      var formattedAddress = response.data.results[0].formatted_address;
+      var formattedAddressOutput = `
+      <ul class = "list-group">
+        <li class="list-group-item"> ${formattedAddress} </li>
+      </ul>
+      `;
+
+      //Address componenets
+      var addressComponents = response.data.results[0].address_components;
+      var addressComponentsOutput = '<ul class = "list-group">';
+      for (var i=0; i<addressComponents.length;i++)
+      {
+        console.log('++++++++')
+        addressComponentsOutput += `
+        <li class="list-group-item"><strong> ${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+        `;
+      }
+      addressComponentsOutput += '</ul>'
+
+      // Geometry
+
+      var lat = response.data.results[0].geometry.location.lat;
+          var lng = response.data.results[0].geometry.location.lng;
+          var geometryOutput = `
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Latitude</strong>: ${lat}</li>
+              <li class="list-group-item"><strong>Longitude</strong>: ${lng}</li>
+            </ul>
+          `;
+
+      //output to app
+      document.getElementById('formatted-address').innerHTML = formattedAddressOutput
+      document.getElementById('address-components').innerHTML = addressComponentsOutput
+      document.getElementById('geometry').innerHTML = geometryOutput
+    })//end of .then function
+    .catch(function(error){
+      alert('Invalid address')
+      console.log(error)
+    })
+  }//end of geocode function
+</script>
+ -->
+
+
+
+
+
 <!-- <img src="/himanshikhattar/Desktop/car_parking/client/images/background1.jpg" alt="background">
 <img src="/himanshikhattar/Desktop/car_parking/client/images/background2.jpg" alt="background">
 <img src="/himanshikhattar/Desktop/car_parking/client/images/background3.jpg" alt="background"> -->

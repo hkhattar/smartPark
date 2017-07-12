@@ -154,8 +154,11 @@
                   <h5> SIGN UP TO PARK OR SHARE </h5>
                     <form>
                       <div class="row">
+                    
+
                           <div class="input-field col s12">
                           {{error.message}}
+                         
                             <input placeholder="First Name" id="firstname" type="text" class="validate" ng-model='user.f_name' name="name">
                            {{error.first}}
                             <label for="firstname" class="active"></label>
@@ -175,6 +178,7 @@
                         <div class="input-field col s12">
                           <input placeholder="Email" id="email" type="text" class="validate" ng-model='user.email'>
                           {{error.email}}
+                          {{log_get_error()}}
                           <label for="email" class="active"></label>
                         </div>
                       </div>

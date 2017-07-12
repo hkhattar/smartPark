@@ -1,0 +1,257 @@
+
+{{log_get_user()}}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>My Geocode</title> -->
+	<!-- axiom -->
+	
+	<!-- <script src="http://maps.googleapis.com/maps/api/js"> </script> -->
+<!-- </head>
+
+<body> -->
+
+<!-- contact
+street
+house_number
+city
+state
+country
+zip_code
+type_of_space
+number_of_spaces
+instructions -->
+<div class = 'container'>
+<h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
+ <form >
+      <input placeholder="Contact Number" id="contact" type="text" class="validate" ng-model='newSpot.contact'>
+      <input placeholder="Address" id="address" type="text" class="validate" ng-model='newSpot.address'>
+      <input placeholder="Street" id="street" type="text" class="validate" ng-model='newSpot.street'>
+      <input placeholder="House Number" id="house_number" type="text" class="validate" ng-model='newSpot.house_number'>
+      <input  id="city" type="hidden" name="San Jose" class="validate" ng-model='newSpot.city' value="San Jose">
+      <input  id="state" type="hidden" class="validate" ng-model='newSpot.state' value= "California">
+      <input  id="country" type="hidden" class="validate" ng-model='newSpot.country' value="United States">
+      <input placeholder="Zip code" id="zip_code" type="text" class="validate" ng-model='newSpot.zip_code'>
+      <input placeholder="Type of space" id="type_of_space" type="text" class="validate" ng-model='newSpot.type_of_space'>
+      <input placeholder="Number of spaces" id="number_of_spaces" type="number" class="validate" ng-model='newSpot.number_of_spaces'>
+      <input placeholder="Vehicle Choice" id="owner_vehicle_choice" type="text" class="validate" ng-model='newSpot.owner_vehicle_choice'>
+      <input placeholder="Instructions" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
+      Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'>
+      End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'>
+      Start Time: <input placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
+      End Time: <input placeholder="End Time" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
+
+
+
+
+
+
+
+       {{address}}
+       <!-- <input placeholder='Street' type="text" id="street" class="form-control form-control-lg">
+       <input placeholder='Route' type="text" id="route" class="form-control form-control-lg">
+       <input type="hidden" id='city' name="city" value="San Jose">
+       <input type="hidden" id='state' name="state" value="CA">
+        <input placeholder='Zip Code' type="text" id="zip_code" class="form-control form-control-lg"> -->
+      
+      
+      <input placeholder='Valid Driver License Number for Address Proof' type="text" id="license" class="validate" ng-model='newSpot.license'>
+      <br>
+	<input type="submit"  value="Rent your spot" ng-click='geocode()'>    </form>
+	<div class='card-block' id = "formatted-address">	</div>
+	<!-- <input type="text" id="formatted-address" onchange="geocode()"/> -->
+
+	<div class= 'card-block' id= "address-components"></div>
+	<div class= 'card-block' id= "geometry"></div>
+
+</div> <!-- end of div class='container' -->
+
+
+<!-- <script>
+
+
+// Get location form
+    var locationForm = document.getElementById('location-form');
+
+    // Listen for submiot
+    locationForm.addEventListener('submit', geocode);
+
+
+	function geocode(e){
+		console.log('inside geocode')
+		e.preventDefault();
+		// var location = '1550 Technology Drive San Jose'
+		var location = document.getElementById("location-input").value;
+		// var location = document. getElementsByClassName('zip_code').value;
+
+		// var location = document.querySelectorAll("#street, #zip_code,#city,#state");
+		console.log(")))))))))))))) ",location)
+
+		axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+			params:{
+				address: location,
+				key: 'AIzaSyBgKwURsd4XhAq0GBTGTDOToFu1S_lFwkk'
+			} // end of params
+		})// end of axios.get
+		.then(function(response){
+			//log full response
+			console.log(response)
+			//formatted address
+			var formattedAddress = response.data.results[0].formatted_address;
+			var formattedAddressOutput = `
+			<ul class = "list-group">
+				<li class="list-group-item"> ${formattedAddress} </li>
+			</ul>
+			`;
+
+			//Address componenets
+			var addressComponents = response.data.results[0].address_components;
+			var addressComponentsOutput = '<ul class = "list-group">';
+			for (var i=0; i<addressComponents.length;i++)
+			{
+				console.log('++++++++')
+				addressComponentsOutput += `
+				<li class="list-group-item"><strong> ${addressComponents[i].types[0]}</strong>: ${addressComponents[i].long_name}</li>
+				`;
+			}
+			addressComponentsOutput += '</ul>'
+
+			// Geometry
+
+			var lat = response.data.results[0].geometry.location.lat;
+        	var lng = response.data.results[0].geometry.location.lng;
+        	var geometryOutput = `
+          	<ul class="list-group">
+            	<li class="list-group-item"><strong>Latitude</strong>: ${lat}</li>
+            	<li class="list-group-item"><strong>Longitude</strong>: ${lng}</li>
+          	</ul>
+        	`;
+
+			//output to app
+			document.getElementById('formatted-address').innerHTML = formattedAddressOutput
+			document.getElementById('address-components').innerHTML = addressComponentsOutput
+			document.getElementById('geometry').innerHTML = geometryOutput
+		})//end of .then function
+		.catch(function(error){
+			alert('Invalid address')
+			console.log(error)
+		})
+	}//end of geocode function
+</script> -->
+
+<!-- </body>
+</html> -->
+
+<!-- <div id='parent_div_1'>
+  <div class ='child_div_1'>
+    <div class="container">
+        <div class="row"> -->
+      
+
+        <!-- <div class="col s11 m6 offset-m0">
+          <div class="card">
+
+          </div>
+        </div>
+ -->
+
+
+          <!-- <div class="col s11 m12 offset-m0">
+              <div class="card">
+                <div class="card-content">
+                  <h4>Please fill out the form to get started listing your spot</h4>
+                    
+                    <form >
+                      <div class="row ">
+                          <div class="input-field col s12"> -->
+                          <!-- {{error.message}}
+                            <input placeholder={{dash_user.f_name}}  id="firstname" type="text" class="validate" ng-model='user.f_name' name="name"  >
+                            {{error.first}}
+                            <label for="firstname" class="active"></label>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder={{dash_user.l_name}}  id="lastname" type="text" class="validate" ng-model='user.l_name'>
+                          {{error.last}}
+                          <label for="lastname" class="active"></label>
+                        </div>
+                      </div>
+                       
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder={{dash_user.email}}  id="email" type="text" class="validate" ng-model='user.email'>
+                          {{error.email}} -->
+                          <!-- <label for="email" class="active"></label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Contact Number" id="contact" type="text" class="validate" ng-model='newSpot.contact'>
+                          <!{{error.email}} -->
+                         <!--  <label for="contact" class="active"></label>
+                        </div>
+                      </div>  -->
+
+                    <!--   <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Street" id="street" type="text" class="validate" ng-model='newSpot.street'>
+                          {{error.email}} 
+                          <label for="street" class="active"></label>
+                        </div>
+                      </div> -->
+<!-- 
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="House Number" id="house_number" type="text" class="validate" ng-model='newSpot.house_number'>
+                         {{error.email}} 
+                          <label for="house_number" class="active"></label>
+                        </div>
+                      </div>
+ -->
+                    <!--   <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="City" id="city" type="text" class="validate" ng-model='newSpot.city'>
+                          {{error.email}} 
+                          <label for="city" class="active"></label>
+                        </div>
+                      </div> -->
+
+                      <!-- <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="State" id="country" type="text" class="validate" ng-model='newSpot.country'>
+                         {{error.email}} 
+                          <label for="country" class="active"></label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Zip Code" id="zip_code" type="text" class="validate" ng-model='newSpot.zip_code'>
+                     {{error.email}} 
+                          <label for="zip_code" class="active"></label>
+                        </div>
+                      </div>
+                      
+                      
+                       <input type="submit"  value="Sign Up" ng-click='add_spot()'>
+                    </form>
+
+                </div>
+                <div class="card-action">
+                 
+                  
+                </div>
+               
+
+              </div>
+            </div>
+
+      </div>
+    </div>
+  </div> -->
+ 
+<!-- </div> -->

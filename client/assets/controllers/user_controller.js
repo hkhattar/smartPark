@@ -79,17 +79,35 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       }
       // $scope.users = 'hhii';
       function setUsers(data)
+
       {
+        console.log('data',data)
+        if(data.already){
+          $scope.already = data.already
+          console.log('$scope.already',$scope.already)
+          error = data.already
+
+        }
         logged_in_user = data;
       }
 
+      $scope.log_get_error = function()
+      {
+        var error = user_factory.log_get_error();
+        console.log("0000000000")
+        console.log('error',error)
+        return error.already;
+
+        
+      }
        $scope.log_get_user = function()
       {
         var user = user_factory.log_get_user();
         console.log("0000000000")
         console.log('user',user)
-
         return user.f_name;
+
+        
       }
 
 
@@ -98,7 +116,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       $scope.logErrors = []; //clear out all previous login errors
       // console.log('$scope.loginUser',$scope.loginUser)
       user_factory.login($scope.loginUser, data => { //run the userFactory.login method and pass the entered user information and a callback function
-        
+        console.log('data',data)
         if (data.errors) { //if the returned data has an errors key...
           
           for (let key in data.errors) { //for every key in the data.errors...
@@ -116,7 +134,84 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
     }; //$scope.login
 
 
-    
+    function setSpots(data)
+      {
+        $scope.spots = data;
+      }
+
+
+      $scope.add_spot = function()
+      {
+        console.log('inside add_spot')
+        if($scope.newSpot.contact.length == 10)
+        {
+          // console.log('inside create question clinet controller');
+          $scope.error = {};
+          // console.log('$scope.newQuestion',$scope.newQuestion)
+          var user = user_factory.log_get_user();
+          console.log('user',user)
+          user_factory.add_spot($scope.newSpot,user,setSpots);
+
+          $scope.newSpot = {};
+          $location.url('/spots');
+        }
+        else{
+          $scope.error = {message: 'Invalid phone number'};
+        }
+     
+      }
+//      contact
+// street
+// house_number
+// city
+// state
+// country
+// zip_code
+// type_of_space
+// number_of_spaces
+// instructions 
+
+      $scope.geocode = function()
+      {
+        console.log('inside geocode')
+        console.log('newSpot',$scope.newSpot)
+        // var location = document.getElementById("location-input").value
+        // var location = $scope.newSpot.street + " "+  $scope.newSpot.city + " "+$scope.newSpot.state + " "+  $scope.newSpot.country + " "+  $scope.newSpot.zip_code
+        var location = $scope.newSpot.street + " "+  "San Jose" + " "+ "California" + " "+  "United States" + " "+  $scope.newSpot.zip_code
+
+        console.log('location************',location)
+        var user = user_factory.log_get_user();
+        console.log('user',user)
+        user_factory.geocode($scope.newSpot, location, user, function(data)
+        {
+          console.log('data************',data)
+          $scope.address = 'Your address'+ ' " ' + data + ' " '
+          $location.url('/spots');
+        })
+
+        
+
+
+      
+      }
+
+//show all the spots
+         $scope.index_spot = function(){
+        console.log('inside index_spot')
+        user_factory.index_spot(function(data){
+          $scope.spots = 'data';
+          $scope.spot = {};
+          console.log("index spot:")
+          console.log($scope.spots)
+
+        })
+      }
+
+      function setSpots(data)
+      {
+        $scope.Spots = data;
+      }
+
 
       
     }
