@@ -21,5 +21,5 @@ module.exports = function(app){
 
     app.post('/spots', spots.create) ;
 
-    // app.get('/all_spots',spots.index_spots);
+    app.get('/spots',spots.index_spots);
 }

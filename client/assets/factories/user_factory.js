@@ -157,8 +157,9 @@ app.factory('user_factory',function($http){
 //get all the spots
          factory.index_spot = function(callback)
     {
-      $http.get('/all_spots').then(function(returned_data)
+      $http.get('/spots').then(function(returned_data)
       {
+        console.log('returned_data',returned_data)
         if(typeof(callback) == 'function')
         {
           callback(returned_data.data);

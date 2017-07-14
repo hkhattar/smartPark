@@ -8,6 +8,37 @@ var Spot = mongoose.model('Spot');
 var User = mongoose.model('User')
 
 module.exports = {
+	index_spots: function(req,res){
+
+    	console.log("dashboard function sever controller users")
+
+    	  var spots = 'hi';
+    	  Spot.find({ //attempt to find a user in the DB based on the entered email address
+						
+					}, (err, data) => {
+					if (err) { //if an error is returned...
+						console.log('131');
+					} else { //if there is no error...
+						if (data) { //and a user is returned (data is not null)...
+							
+							
+							console.log('spots1',spots)
+							spots = data
+							console.log('spots2',spots)
+							// res.render('dashboard',{users:users})
+							res.json(spots)
+
+				
+								  }
+							};
+						})
+			// var users = User.find({})
+
+    	// console.log('users3',users)
+    	// res.render('dashboard',{user:'123'})
+
+
+    },
 	create: function(req,res)
 	{
 		console.log('inside spot create server controller')

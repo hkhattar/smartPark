@@ -1,5 +1,8 @@
 app.controller('user_controller', ['$scope','$cookies','$location','$routeParams','user_factory',
 
+    
+// $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
     function($scope,$cookies,$location,$routeParams,user_factory)
     {
    
@@ -134,10 +137,10 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
     }; //$scope.login
 
 
-    function setSpots(data)
-      {
-        $scope.spots = data;
-      }
+    // function setSpots(data)
+    //   {
+    //     $scope.spots = data;
+    //   }
 
 
       $scope.add_spot = function()
@@ -199,7 +202,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
          $scope.index_spot = function(){
         console.log('inside index_spot')
         user_factory.index_spot(function(data){
-          $scope.spots = 'data';
+          $scope.spots = data;
           $scope.spot = {};
           console.log("index spot:")
           console.log($scope.spots)
@@ -207,10 +210,12 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
         })
       }
 
-      function setSpots(data)
-      {
-        $scope.Spots = data;
-      }
+      $scope.index_spot();
+
+      // function setSpots(data)
+      // {
+      //   $scope.Spots = data;
+      // }
 
 
       
