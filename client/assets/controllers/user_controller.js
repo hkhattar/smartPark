@@ -28,6 +28,8 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       /(?=^.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{:;'?/><.;,])(?!.*\s).*$/; //regex to test password against
       var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$///regex to test email against
       
+      var house_numberRegex= /^\d+[a-zA-Z]*$/
+      var driver_licenseRegex = /^[A-Z]{1}\d{7}$/
       // var users = [];
       
       $scope.users = 'm';
@@ -176,22 +178,52 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
 
       $scope.geocode = function()
       {
-        console.log('inside geocode')
-        console.log('newSpot',$scope.newSpot)
-        // var location = document.getElementById("location-input").value
-        // var location = $scope.newSpot.street + " "+  $scope.newSpot.city + " "+$scope.newSpot.state + " "+  $scope.newSpot.country + " "+  $scope.newSpot.zip_code
-        var location = $scope.newSpot.street + " "+  "San Jose" + " "+ "California" + " "+  "United States" + " "+  $scope.newSpot.zip_code
 
-        console.log('location************',location)
-        var user = user_factory.log_get_user();
-        console.log('user',user)
-        user_factory.geocode($scope.newSpot, location, user, function(data)
+        $scope.error = {message: 'All fields are required'};
+       
+        if($scope.newSpot.contact.length < 10)
         {
-          console.log('data************',data)
-          $scope.address = 'Your address'+ ' " ' + data + ' " '
-          $location.url('/spots');
-        })
+          $scope.error = {contact: 'Invalid phone number'};
+          
+        }
+        else if($scope.newSpot.street.length < 5)
+        {
+          $scope.error = {street: 'Invalid street'};
+          
+        }
+        else if (!$scope.newSpot.house_number.match(house_numberRegex)) { //if the house number entered does not match regex...
+          $scope.error = {house_number: 'Invalid house_number'};
 
+        }
+      else if ($scope.newSpot.start_date > $scope.newSpot.end_date ){
+        $scope.error = {date: 'End date should be greater than start date'}
+        }
+         else if ($scope.newSpot.start_time > $scope.newSpot.end_time ){
+        $scope.error = {time: 'End time should be greater than start time'}
+        }
+
+        else if (!$scope.newSpot.license.match(driver_licenseRegex)) { //if the house number entered does not match regex...
+          $scope.error = {driver_license: 'Invalid driver license number'};
+
+        }
+        else
+        {
+            console.log('inside geocode')
+            console.log('newSpot',$scope.newSpot)
+            // var location = document.getElementById("location-input").value
+            // var location = $scope.newSpot.street + " "+  $scope.newSpot.city + " "+$scope.newSpot.state + " "+  $scope.newSpot.country + " "+  $scope.newSpot.zip_code
+            var location = $scope.newSpot.street + " "+  "San Francisco" + " "+ "California" + " "+  "United States" + " "+  $scope.newSpot.zip_code
+
+            console.log('location************',location)
+            var user = user_factory.log_get_user();
+            console.log('user',user)
+            user_factory.geocode($scope.newSpot, location, user, function(data)
+            {
+              console.log('data************',data)
+              $scope.address = 'Your address'+ ' " ' + data + ' " '
+              $location.url('/spots');
+            })
+        }
         
 
 

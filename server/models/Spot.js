@@ -31,6 +31,7 @@ var SpotSchema = new mongoose.Schema({
 	end_date:{type:Date},
 	start_time:{type:Date},
 	end_time:{type:Date},
+	license: {type: String},
 	lat:{type:Number},
 	lng:{type:Number}
 	// entry_time:{}

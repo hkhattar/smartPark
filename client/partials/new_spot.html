@@ -25,25 +25,56 @@ number_of_spaces
 instructions -->
 <div class = 'container'>
 <h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
+
  <form >
+                           {{error.message}}
+
       <input placeholder="Contact Number" id="contact" type="text" class="validate" ng-model='newSpot.contact'>
+                                 {{error.contact}}
+
       <input placeholder="Address" id="address" type="text" class="validate" ng-model='newSpot.address'>
       <input placeholder="Street" id="street" type="text" class="validate" ng-model='newSpot.street'>
+                                 {{error.street}}
+
       <input placeholder="House Number" id="house_number" type="text" class="validate" ng-model='newSpot.house_number'>
-      <input  id="city" type="hidden" name="San Jose" class="validate" ng-model='newSpot.city' value="San Jose">
+                                 {{error.house_number}}
+
+      <input  id="city" type="hidden" name="San Jose" class="validate" ng-model='newSpot.city' value="San Francisco">
       <input  id="state" type="hidden" class="validate" ng-model='newSpot.state' value= "California">
       <input  id="country" type="hidden" class="validate" ng-model='newSpot.country' value="United States">
-      <input placeholder="Zip code" id="zip_code" type="text" class="validate" ng-model='newSpot.zip_code'>
-      <input placeholder="Type of space" id="type_of_space" type="text" class="validate" ng-model='newSpot.type_of_space'>
-      <input placeholder="Number of spaces" id="number_of_spaces" type="number" class="validate" ng-model='newSpot.number_of_spaces'>
-      <input placeholder="Vehicle Choice" id="owner_vehicle_choice" type="text" class="validate" ng-model='newSpot.owner_vehicle_choice'>
+      <input placeholder="Zip code" id="zip_code" type="number" min="94102" max="94177" class="validate" ng-model='newSpot.zip_code'>
+       <div class="row">
+               <label>Type of Space</label>
+               <select class="browser-default" ng-model='newSpot.type_of_space'>
+                  <option value="" disabled selected>Select Type of space</option>
+                  <option value="Drive Way">Drive way</option>
+                  <option value="Garage">Garage</option>
+                  <option value="Car Park">Car Park</option>
+               </select>
+            </div>
+      <!-- <input placeholder="Type of space" id="type_of_space" type="text" class="validate" ng-model='newSpot.type_of_space'> -->
+      <input placeholder="Number of spaces" min="1" id="number_of_spaces" type="number" class="validate" ng-model='newSpot.number_of_spaces'>
+      <!-- <input placeholder="Vehicle Choice" id="owner_vehicle_choice" type="text" class="validate" ng-model='newSpot.owner_vehicle_choice'> -->
+       <div class="row">
+               <label>Vehicle Choice</label>
+               <select class="browser-default" ng-model='newSpot.owner_vehicle_choice'>
+                  <option value="" disabled selected>Select Vehicle Choice</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Truck">Truck</option>
+               </select>
+        </div>
       <input placeholder="Instructions" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
       Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'>
       End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'>
+      {{error.date}}
+      <br>
       Start Time: <input placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
       End Time: <input placeholder="End Time" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
 
 
+      {{error.time}}
+      <br>
 
 
 
@@ -58,6 +89,8 @@ instructions -->
       
       
       <input placeholder='Valid Driver License Number for Address Proof' type="text" id="license" class="validate" ng-model='newSpot.license'>
+            {{error.driver_license}}
+
       <br>
 	<input type="submit"  value="Rent your spot" ng-click='geocode()'>    </form>
 	<div class='card-block' id = "formatted-address">	</div>
