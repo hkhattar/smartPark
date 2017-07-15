@@ -28,6 +28,10 @@ p {
   line-height: 2rem;
 }
 
+.error {
+	color:red;
+
+}
 .button-collapse {
   color: #26a69a;
 }
@@ -68,3 +72,4 @@ p {
 footer.page-footer {
   margin: 0;
 }
+

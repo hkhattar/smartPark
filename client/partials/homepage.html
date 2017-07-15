@@ -18,6 +18,8 @@
         <li><a href="http://34.211.29.202/#/about">About Us</a></li>
         <li><a href="http://34.211.29.202/#/sign_up">Sign Up</a></li>
         <li><a href="http://34.211.29.202/#/log_in">Log In</a></li>
+        <li><a href="/logout">Log Out</a></li>
+
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -157,17 +159,17 @@
                     
 
                           <div class="input-field col s12">
-                          {{error.message}}
+                          <div class="error">{{error.message}}</div> 
                          
                             <input placeholder="First Name" id="firstname" type="text" class="validate" ng-model='user.f_name' name="name">
-                           {{error.first}}
+                            <div class="error"> {{error.first}}</div> 
                             <label for="firstname" class="active"></label>
                           </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
                           <input placeholder="Last Name" id="lastname" type="text" class="validate" ng-model='user.l_name'>
-                          {{error.last}}
+                         <div class="error">{{error.last}}</div> 
                           <label for="lastname" class="active"></label>
                         </div>
                       </div>
@@ -177,22 +179,22 @@
                        <div class="row">
                         <div class="input-field col s12">
                           <input placeholder="Email" id="email" type="text" class="validate" ng-model='user.email'>
-                          {{error.email}}
-                          {{log_get_error()}}
+                          <div class="error">{{error.email}}</div>
+                          <div class="error">{{log_get_error()}}</div> 
                           <label for="email" class="active"></label>
                         </div>
                       </div>
                         <div class="row">
                         <div class="input-field col s12">
-                          <input placeholder="Password" id="password" type="password" class="validate" ng-keyup="checkPword()" ng-keydown="checkPword()" ng-model='user.password'>
-                         {{error.password}}
+                          <input placeholder="Password" id="password" type="password" class="validate"   ng-model='user.password'>
+                         <div class="error">{{error.password}}</div>
                           <label for="password" class="active"></label>
                         </div>
                       </div>
                         <div class="row">
                         <div class="input-field col s12">
                           <input placeholder="Confirm Password" id="confirm_password" type="password" class="validate" ng-model='user.confirm_password'>
-                        {{error.confirm_password}}
+                        <div class="error"> {{error.confirm_password}}</div>
                           <label for="confirm_password" class="active"></label>
                         </div>
                       </div>

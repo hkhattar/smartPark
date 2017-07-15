@@ -48,17 +48,17 @@ instructions -->
 <h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
 
  <form >
-                           {{error.message}}
+                        <div class="error">{{error.message}}</div>   
 
       <input placeholder="Contact Number" id="contact" type="text" class="validate" ng-model='newSpot.contact'>
-                                 {{error.contact}}
+                               <div class="error">{{error.contact}}</div>  
 
       <input placeholder="Address" id="address" type="text" class="validate" ng-model='newSpot.address'>
       <input placeholder="Street" id="street" type="text" class="validate" ng-model='newSpot.street'>
-                                 {{error.street}}
+                                <div class="error">{{error.street}}</div> 
 
       <input placeholder="House Number" id="house_number" type="text" class="validate" ng-model='newSpot.house_number'>
-                                 {{error.house_number}}
+                                <div class="error">{{error.house_number}}</div> 
 
       <input  id="city" type="hidden" name="San Jose" class="validate" ng-model='newSpot.city' value="San Francisco">
       <input  id="state" type="hidden" class="validate" ng-model='newSpot.state' value= "California">
@@ -88,13 +88,13 @@ instructions -->
       <input placeholder="Instructions" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
       Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'>
       End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'>
-      {{error.date}}
+      <div class="error">{{error.date}}</div>
       <br>
       Start Time: <input placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
       End Time: <input placeholder="End Time" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
 
 
-      {{error.time}}
+    <div class="error">{{error.time}}</div>  
       <br>
 
 
@@ -110,8 +110,7 @@ instructions -->
       
       
       <input placeholder='Valid Driver License Number for Address Proof' type="text" id="license" class="validate" ng-model='newSpot.license'>
-            {{error.driver_license}}
-
+           <div class="error">{{error.driver_license}}</div> 
       <br>
 	<input type="submit"  value="Rent your spot" ng-click='geocode()'>    </form>
 	<div class='card-block' id = "formatted-address">	</div>
