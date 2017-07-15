@@ -19,7 +19,7 @@ var SpotSchema = new mongoose.Schema({
 	contact:{type:Number},
 	street:{type:String},
 	house_number:{type:Number},
-	city:{type:String,default: 'San Jose'},
+	city:{type:String,default: 'San Francisco'},
 	state:{type:String, default: 'California'},
 	country:{type:String, default: 'United States'},
 	zip_code:{type:String},

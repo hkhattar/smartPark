@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var Spot = mongoose.model('Spot');
+var bcrypt = require('bcrypt');
 
 
 
@@ -278,6 +279,8 @@ module.exports = {
 		var success = false
 		
 		// console.log('user_id',user.id)
+		var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(
+					8)); //hash the password
 		
 		User.findOne({ //attempt to find a user in the DB based on the entered email address
 						email: req.body.email
@@ -295,7 +298,19 @@ module.exports = {
 
 						else{
 							success = true
-							var user = new User({success:success,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:req.body.password});
+
+
+							// bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+       //  					if(err) return next(err);
+ 
+       //  					bcrypt.hash(req.body.password, salt, function(err, hash){
+       //      				if(err) return next(err);
+ 
+       //      				})
+       //  					})
+
+
+							var user = new User({success:success,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:hash});
 							user.save(function(err,data){
 		
 								if(err){
@@ -394,7 +409,7 @@ module.exports = {
 					} else { //if user information IS retrieved...
 						console.log('req.body.password',req.body.password)
 						console.log('data.password',data.password)
-						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
+						if (bcrypt.compareSync(req.body.password, data.password)) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
 							
 							console.log('data+++++++++++++++',data)
