@@ -3,6 +3,8 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
     
 // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
+   
+ 
     function($scope,$cookies,$location,$routeParams,user_factory)
     {
    

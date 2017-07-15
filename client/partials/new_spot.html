@@ -1,5 +1,26 @@
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+    	<ul>
+    		<li id='logo'></li>
+    	</ul>
+      <ul class="right hide-on-med-and-down">
+      	<li><a href="#/">Home</a></li>
+      	<li><a href="#/about">About</a></li>
+        <li><a href="#/spot/new">Rent out your spot</a></li>
+        <li><a href="#/spots">Reserve Location</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      </ul>
 
-{{log_get_user()}}
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">About us</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+<!-- {{log_get_user()}} -->
+<h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
+
 
 
 <!-- <!DOCTYPE html>
