@@ -279,8 +279,8 @@ module.exports = {
 		var success = false
 		
 		// console.log('user_id',user.id)
-		var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(
-					8)); //hash the password
+		// var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(
+		// 			8)); //hash the password
 		
 		User.findOne({ //attempt to find a user in the DB based on the entered email address
 						email: req.body.email
@@ -310,7 +310,7 @@ module.exports = {
        //  					})
 
 
-							var user = new User({success:success,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:hash});
+							var user = new User({success:success,f_name:req.body.f_name,l_name:req.body.l_name,email:req.body.email,password:req.body.password});
 							user.save(function(err,data){
 		
 								if(err){
@@ -409,7 +409,7 @@ module.exports = {
 					} else { //if user information IS retrieved...
 						console.log('req.body.password',req.body.password)
 						console.log('data.password',data.password)
-						if (bcrypt.compareSync(req.body.password, data.password)) { //assuming the password entered matches that in the DB for that user...
+						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
 							
 							console.log('data+++++++++++++++',data)
