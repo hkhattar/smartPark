@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var Spot = mongoose.model('Spot');
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 
 
 
