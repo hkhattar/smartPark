@@ -108,7 +108,18 @@
      		<div class="card">
         		<div class="card-content">
         		<h4 class='center-align'>Spots</h4>
-					<table >
+           <nav>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required ng-model="searchText">
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+          </nav>
+					<table id="searchTextResults" class='highlight'>
 						<thead>
 							<tr>
 								<th>Contact</th>
@@ -129,6 +140,8 @@
 								<th>Driver's License</th>
 								<th>Longitude</th>
 								<th>Latitude</th>
+                <th>Actions</th>
+                <th>Spot id</th>
 								
 							</tr>
 						</thead>
@@ -136,7 +149,7 @@
 							<tr>
 								
 							</tr>
-							<tr ng-repeat='spot in spots' >
+							<tr ng-repeat='spot in spots | filter:searchText' >
 
 								<td>{{spot.contact}}</td>
 								<td>{{spot.street}}</td>
@@ -156,6 +169,8 @@
 								<td>{{spot.license}}</td>
 								<td>{{spot.lng}}</td>
 								<td>{{spot.lat}}</td>
+                <td><a href="#/spots/{{spot._id}}"  >Book</a></td>
+                <td>{{spot._id}}</td>
 
 
 

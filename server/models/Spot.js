@@ -29,11 +29,12 @@ var SpotSchema = new mongoose.Schema({
 	instructions:{type:String},
 	start_date:{type:Date},
 	end_date:{type:Date},
-	start_time:{type:Date},
-	end_time:{type:Date},
+	start_time:{type:String},
+	end_time:{type:String},
 	license: {type: String},
 	lat:{type:Number},
-	lng:{type:Number}
+	lng:{type:Number},
+	_renters:[{type:Schema.Types.ObjectId, ref: 'User'}],
 	// entry_time:{}
 	
 	

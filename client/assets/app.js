@@ -47,6 +47,11 @@ $routeProvider
           controller: 'user_controller'
         })
 
+        .when('/spots/:id',{
+          templateUrl: 'partials/spot.html',
+          controller: 'user_controller'
+        })
+
         
 
 });

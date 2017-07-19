@@ -15,10 +15,14 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">parkAtEase</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="http://34.211.29.202/#/about">About Us</a></li>
-        <li><a href="http://34.211.29.202/#/sign_up">Sign Up</a></li>
-        <li><a href="http://34.211.29.202/#/log_in">Log In</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#sign_up">Sign Up</A> </li> 
+        <!-- <li><a href="http://34.211.29.202/#/sign_up"></a></li> -->
+        <li><a href="#log_in">Log In</a></li>
         <li><a href="/logout">Log Out</a></li>
+        <li><a ng-click="scrollTo('foo')">Foo</a></li> 
+        <li> <a href="#anchorLinkID" target="_self">Go to inpage section</a></li> 
+
 
       </ul>
 
@@ -149,11 +153,14 @@
         </div> -->
 
 
-
+ <div id="foo">Here you are</div>
+ <div id="_self">hello</div>
           <div class="col s11 m12 offset-m0">
               <div class="card">
                 <div class="card-content">
-                  <h5> SIGN UP TO PARK OR SHARE </h5>
+                  <h5> SIGN UP TO PARK OR SHARE </h5> 
+                  <a name="register">
+                 
                     <form>
                       <div class="row">
                     
@@ -238,7 +245,7 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input placeholder="Password" id="password" type="text" class="validate" ng-model='loginUser.password' name="password">
+                <input placeholder="Password" id="password" type="password" class="validate" ng-model='loginUser.password' name="password">
                 {{ error.message }}
                 <label for="password" class="active"></label>
               </div>

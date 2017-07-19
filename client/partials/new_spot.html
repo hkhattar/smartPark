@@ -1,3 +1,5 @@
+
+
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
     	<ul>
@@ -22,7 +24,7 @@
 <!-- {{log_get_user()}} -->
 <h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
 
-
+  
 
 <!-- <!DOCTYPE html>
 <html>
@@ -91,7 +93,15 @@ instructions -->
       End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'>
       <div class="error">{{error.date}}</div>
       <br>
-      Start Time: <input placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
+
+<!-- 
+<input data-date-time-input="YYYY-MMM-DD" /> -->
+
+
+
+      Start Time: <input data-date-time-input="YYYY-MMM-DD" placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
+
+      
       End Time: <input placeholder="End Time" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
 
 

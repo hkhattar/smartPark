@@ -95,4 +95,15 @@ module.exports = {
 		
 	},
 
+
+	show_spot: function(req,res){
+		Spot.findOne({_id:req.params.id},function(err,result){
+			res.json(result);
+		})
+		.populate('_renters').exec(function(err,spot){
+			// console.log('error', err);
+		})
+
+	},
+
 }//end off module.exports

@@ -1,0 +1,94 @@
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+    	<ul>
+    		<li id='logo'></li>
+    	</ul>
+      <ul class="right hide-on-med-and-down">
+      	<li><a href="#/">Home</a></li>
+      	<li><a href="#/about">About</a></li>
+      	<li><a href="#/dashboard">Profile</a></li>
+        <li><a href="#/spot/new">Rent out your spot</a></li>
+        <li><a href="#/spots">Reserve Location</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">About us</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <h5 class='right-align'> <pre>{{dash_user}}   </pre>    </h5>
+
+
+  
+
+<div class="container">
+  <div class="row">
+      <div class="col s18 m20 offset-m0">
+        <div class="card">
+            <div class="card-content">
+            <h4>COMPLETE PAYMENT</h4> 
+              <form>
+              <br>
+              Arriving on:
+              <br>
+              Departing on:
+              <br>
+              Listing: {{spot.street}}, {{spot.zip_code}}
+              <br>
+                <!-- <input type="text" name="f_name" value="{{dash_user.f_name}}">
+                <input type="text" name="l_name" value="{{dash_user.l_name}}">
+                <input type="text" name="email" value="{{dash_user.email}}"> -->
+
+            <!--     <div ng-if="{{dash_user.contact}} == 123123123">
+                   <input type="text" name="contact" value="{{dash_user.contact}}">
+                </div> -->
+
+                Vehicle:  <br>
+                {{dash_user.type_of_car}}            
+                 <input  id="type_of_car" type="text" class="validate" ng-model='newRenter.type_of_car'>
+                               <div class="error">{{error.type_of_car}}</div>
+
+            
+                <!-- </div> -->
+
+               
+
+              
+                License Plate: <br>
+                {{dash_user.license_plate}}
+                <input  id="license_plate" type="text" class="validate" ng-model='newRenter.license_plate'>
+                               <div class="error">{{error.license_plate}}</div>
+
+              
+                  PAYMENT DETAILS
+
+                  <input placeholder="Card Number" id="card_number" type="text" class="validate" ng-model='newRenter.card_number'>
+                  <input placeholder="Expiry" id="expiry" type="text" class="validate" ng-model='newRenter.expiry'>
+                  <input placeholder="CVV" id="cvv" type="text" class="validate" ng-model='newRenter.cvv'>
+
+
+                      Contact Number: <br>
+                      {{dash_user.contact}}
+                <!-- <span ng-show="{{dash_user.contact.length}} > 5 "><input type="text" name="contact" value="{{dash_user.contact}}"></span> -->
+
+
+                <!-- <div ng-show="{{dash_user.contact.length}} < 5"> -->
+                  <input  id="contact" type="text" class="validate" ng-model='newRenter.contact' >
+                               <div class="error">{{error.contact}}</div>
+
+                   <input type="submit"  value="Complete and Pay " ng-click='create_renter_by_id()'>
+
+              </form>
+          
+
+        </div> <!-- container -->
+      </div> <!-- row -->
+    </div> <!-- col s18 m20 offset-m0 -->
+  </div> <!-- card -->
+</div> <!-- card-content -->
+
+
+

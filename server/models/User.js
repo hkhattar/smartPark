@@ -26,7 +26,11 @@ var UserSchema = new mongoose.Schema({
 	state:{type:String},
 	country:{type:String},
 	zip_code:{type:String},
+	address:{type:String},
+	license_plate:{type:String},
+	type_of_car:{type:String},
 	_spots:[{type:Schema.Types.ObjectId, ref: 'Spot'}],
+	_rent_spots:[{type:Schema.Types.ObjectId, ref: 'Spot'}],
 	
 });
 

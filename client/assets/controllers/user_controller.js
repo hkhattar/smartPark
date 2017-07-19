@@ -1,14 +1,19 @@
-app.controller('user_controller', ['$scope','$cookies','$location','$routeParams','user_factory',
+app.controller('user_controller', ['$scope','$cookies','$location','$anchorScroll','$routeParams','user_factory',
 
     
 // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
-   
  
-    function($scope,$cookies,$location,$routeParams,user_factory)
+    function($scope,$cookies,$location,$anchorScroll,$routeParams,user_factory)
     {
    
       console.log('user_controller loaded');
+
+      $scope.scrollTo = function(id) 
+      {
+        $location.hash(id);
+        $anchorScroll();
+      }
 
        $scope.dash_user = {};
       user_factory.checkSesh(data => {
@@ -252,8 +257,68 @@ app.controller('user_controller', ['$scope','$cookies','$location','$routeParams
       // }
 
 
-      
-    }
+
+
+      $scope.create_renter_by_id = function()
+      {
+        console.log('INSIDE create_renter_by_id')
+        console.log('$scope.newRenter',$scope.newRenter)
+        if($scope.newRenter.contact.length > 5)
+        {
+          console.log("inside create_renter_by_id if statement")
+          $scope.error = {};
+          
+          var user = user_factory.log_get_user();
+          console.log('*************user',user)
+          user_factory.create_renter_by_id($routeParams.id,$scope.newRenter,user,function(data)
+          {
+            console.log("routeParams.id", $routeParams.id)
+        //     $scope.renter = data;
+        //     // console.log("Data:")
+        //     setRenter(data);
+        //     // console.log(data)
+        //     $scope.spots.push(data)
+        //     // console.log($scope.questions[15])
+        //     // loop through questions
+        //     var spot;
+        //     for (var x=0; x<$scope.spots.length;x++)
+        //     {
+        //       if($scope.spots[x]._id == data._spot)
+        //       {
+        //         spot = $scope.spots[x];
+        //       }
+        //     }
+        //     // console.log('question',question)
+        //     // find question that matches data._question
+        //     // console.log(question._answers)
+        //     // push answer (data) to that question
+        //    spot._renters.push(data);
+        //     // location.reload()
+         
+          })
+        }
+        else
+        {
+          $scope.error = {message: 'Your contact must be 10 characters long!'};
+        }
+
+      //    $scope.$watch('newAnswer', function () {
+      //   // console.log('QQQQQQQQQQQQQ',$scope.newAnswer); 
+      // });
+      }
+
+      $scope.get_spot_by_id = function()
+      {
+        // console.log('controller--get_question_by_id');
+        user_factory.get_spot_by_id($routeParams.id,function(data)
+        {
+          $scope.spot = data;
+        })
+      }
+
+      $scope.get_spot_by_id();
+    } 
+    // end of function($scope,$cookies,$location,$anchorScroll,$routeParams,user_factory)
 
 ]);
 

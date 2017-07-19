@@ -166,6 +166,32 @@ app.factory('user_factory',function($http){
         }
       })
     }
+
+       factory.create_renter_by_id = function(id,renterContent, user, callback){
+        console.log(id,'id')
+        console.log('create_renter_by_id in factory');
+        console.log('renterContent',renterContent)
+        console.log('user',user)
+        $http.post('/renters/' + id,{user: user, renter: renterContent}).then(function(returned_data){
+          // console.log('******returned_data.data*****',returned_data.data)
+          // console.log('inside factory.create_answer_by_id');
+          
+          if(typeof(callback) == 'function'){
+            callback(returned_data.data);
+          }
+        })
+
+       }
+
+//get particular spot by id(the user wants to book this particular spot)
+    factory.get_spot_by_id = function(id,callback)
+    {
+      $http.get('/spots/' + id).then(function(returned_data)
+      {
+        callback(returned_data.data);
+          
+      })
+    }
        
         return factory;
     })

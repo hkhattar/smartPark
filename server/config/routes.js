@@ -1,5 +1,7 @@
 var users = require('../controllers/users.js')//we can get functions from friends
 var spots = require('../controllers/spots.js')
+var renters = require('../controllers/renters.js')
+
 module.exports = function(app){
 	app.get('/', function(req, res) {
 		// console.log('/users')
@@ -22,4 +24,8 @@ module.exports = function(app){
     app.post('/spots', spots.create) ;
 
     app.get('/spots',spots.index_spots);
+
+    app.post('/renters/:id',renters.create);
+
+    app.get('/spots/:id',spots.show_spot);
 }
