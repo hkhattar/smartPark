@@ -107,8 +107,8 @@ module.exports = {
 	},
 
 	zip_code: function(req,res){
-		Spot.findOne({zip_code:req.body.zip_code},function(err,result){
-			console.log('result',result)
+		Spot.find({zip_code:req.body.zip_code},function(err,result){
+			console.log('result*********************',result)
 			res.json(result);
 		})
 		// .populate('_renters').exec(function(err,spot){
