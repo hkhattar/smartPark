@@ -28,4 +28,6 @@ module.exports = function(app){
     app.post('/renters/:id',renters.create);
 
     app.get('/spots/:id',spots.show_spot);
+
+    app.post('/zipcode',spots.zip_code);
 }
