@@ -15,6 +15,7 @@ var SpotSchema = new mongoose.Schema({
 	
 	
 	_user: {type:Schema.Types.ObjectId, ref: 'User'},
+	owner: {type:String},
 	success:{type:Boolean, default: false},
 	contact:{type:Number},
 	street:{type:String},

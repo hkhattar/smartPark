@@ -9,6 +9,12 @@ module.exports = function(app){
     
 	});
 
+	app.get('/index', function(req, res) {
+		// console.log('/users')
+   		users.index(req,res)
+    
+	});
+
 	app.post('/register', users.register);
 
 	app.post('/login', users.login);
