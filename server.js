@@ -13,6 +13,13 @@ var axios = require('axios')
 // new code:
 var session = require('express-session');
 // var moment = require('moment');
+// var accountSid = 'PN2771eecd9f277e0cd2f94858aa126764'; // Your Account SID from www.twilio.com/console
+var accountSid = 'AC78353e9a712677f00a381f97a8d13765'
+var authToken = '28bd31638cb4b1416f568d25fb76f913';   // Your Auth Token from www.twilio.com/console
+
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
+// var twilio = require('twilio')('PN2771eecd9f277e0cd2f94858aa126764','28bd31638cb4b1416f568d25fb76f913')
 // original code:
 app.use(cookieParser());
 // more new code:
@@ -38,6 +45,28 @@ app.use(express.static(path.join(__dirname, './client/static')));
 app.set('views', path.join(__dirname, './client/views'));
 // Setting our View Engine set to EJS
 app.set('view engine', 'ejs');
+
+app.get('/testtwilio', function(req,res)
+{
+	client.sendMessage({
+		to:'+16692240110',
+		from:'+18587804791',
+		body:'hello twilio'
+
+	}, function(err,data){
+		if (err)
+			{
+				console.log('err',err)
+			}
+		else
+			{
+				console.log('res',res)
+			}
+
+	})
+	
+	
+})
 
 
 var routes_setter = require('./server/config/routes.js')

@@ -71,6 +71,8 @@ module.exports = {
 			spot.owner = user.f_name
 			// console.log("spot._")
 			user._spots.push(spot);
+			// user._spots = 
+
 			spot.save(function(err)
 			{
 				user.save(function(err)
@@ -81,7 +83,7 @@ module.exports = {
 					}
 					else
 					{
-						
+						console.log('user*****************************',user)
 						res.json(spot);
 					}
 

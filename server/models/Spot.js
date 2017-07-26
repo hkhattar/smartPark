@@ -36,6 +36,7 @@ var SpotSchema = new mongoose.Schema({
 	lat:{type:Number},
 	lng:{type:Number},
 	_renters:[{type:Schema.Types.ObjectId, ref: 'User'}],
+	
 	// entry_time:{}
 	
 	

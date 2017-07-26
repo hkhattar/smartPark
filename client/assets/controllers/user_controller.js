@@ -273,6 +273,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
           user_factory.create_renter_by_id($routeParams.id,$scope.newRenter,user,function(data)
           {
             console.log("routeParams.id", $routeParams.id)
+            console.log('data',data)
         //     $scope.renter = data;
         //     // console.log("Data:")
         //     setRenter(data);

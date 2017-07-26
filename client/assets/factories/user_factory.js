@@ -177,6 +177,7 @@ app.factory('user_factory',function($http){
           // console.log('inside factory.create_answer_by_id');
           
           if(typeof(callback) == 'function'){
+            console.log('returned_data',returned_data.data)
             callback(returned_data.data);
           }
         })
