@@ -163,10 +163,11 @@
 								<td>{{spot.number_of_spaces}}</td>
 								<td>{{spot.owner_vehicle_choice}}</td>
 								<td>{{spot.instructions}}</td>
-								<td>{{spot.start_date}}</td>
-								<td>{{spot.end_date}}</td>
-								<td>{{spot.start_time}}</td>
-								<td>{{spot.end_time}}</td>
+								<td>{{spot.start_date | date}}</td>
+                <!-- <td ng-bind="spot.date | date: 'MMMM d, y'"></td> -->
+								<td>{{spot.end_date | date}} </td>
+								<td>{{spot.start_time | date:'h:mm' }}</td>
+								<td>{{spot.end_time | date:'h:mm' }}</td>
 								<td>{{spot.license}}</td>
 								<td>{{spot.lng}}</td>
 								<td>{{spot.lat}}</td>
