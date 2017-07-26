@@ -15,7 +15,9 @@ var SpotSchema = new mongoose.Schema({
 	
 	
 	_user: {type:Schema.Types.ObjectId, ref: 'User'},
-	owner: {type:String},
+	// owner: {type:String},
+	f_name: {type:String},
+	l_name: {type:String},
 	success:{type:Boolean, default: false},
 	contact:{type:Number},
 	street:{type:String},
@@ -36,7 +38,7 @@ var SpotSchema = new mongoose.Schema({
 	lat:{type:Number},
 	lng:{type:Number},
 	_renters:[{type:Schema.Types.ObjectId, ref: 'User'}],
-	
+
 	// entry_time:{}
 	
 	

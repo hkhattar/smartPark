@@ -68,7 +68,11 @@ module.exports = {
 		User.findOne({_id:req.body.user._id},function(err,user){
 			var spot = new Spot({contact:req.body.spot.contact,street:req.body.spot.street, house_number:req.body.spot.house_number,license:req.body.spot.license, zip_code:req.body.spot.zip_code, type_of_space:req.body.spot.type_of_space, number_of_spaces:req.body.spot.number_of_spaces,owner_vehicle_choice:req.body.spot.owner_vehicle_choice, instructions:req.body.spot.instructions, start_date:req.body.spot.start_date, end_date:req.body.spot.end_date, start_time:req.body.spot.start_time, end_time:req.body.spot.end_time, license:req.body.spot.license, lat:req.body.lat, lng:req.body.lng, });
 			spot._user = user._id;
-			spot.owner = user.f_name
+			// spot.owner = user.f_name
+			spot.f_name = user.f_name
+			spot.l_name = user.l_name
+
+
 			// console.log("spot._")
 			user._spots.push(spot);
 			// user._spots = 
