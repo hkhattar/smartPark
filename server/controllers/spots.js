@@ -111,7 +111,9 @@ module.exports = {
 	},
 
 	zip_code: function(req,res){
-		Spot.find({zip_code:req.body.zip_code},function(err,result){
+		console.log('post data', req.body)
+		// { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] }
+		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice}]},function(err,result){
 			console.log('result*********************',result)
 			// User.findOne({_id:result._user})
 			res.json(result);
