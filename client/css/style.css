@@ -42,7 +42,7 @@
 }
 
 .bookings{
-border: 1px solid red;
+border: 1px solid transparent;
 width:300px;
 height:300px;
 margin-left: 460px;
