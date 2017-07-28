@@ -8,6 +8,54 @@ var Spot = mongoose.model('Spot');
 var User = mongoose.model('User')
 
 module.exports = {
+
+	delete: function(req,res){
+
+    	console.log("delete function sever controller users")
+    	console.log('POST DATA',req.body)
+    	// res.cookie('dash_user', data);
+    	// console.log('!!!!!!!!',req.cookies.dash_user._spots) 
+    	// console.log('iii', typeOf req.cookies.dash_user._spots)
+
+
+  //   	var array = req.cookies.dash_user._spots;
+  //   	for(var i = array.length - 1; i >= 0; i--) {
+  //   		if(array[i] === req.body._id) {
+  //      			// array.splice(i, 1);
+  //      			for (var j=i; j<array.length; j++)
+  //      			{
+  //      				// console.log('pppppppi',array[i])
+       			
+  //      			// array.pop();
+  //      			console.log('array[j]',array[j])
+  //      			array[j] = array[j+1]
+  //      			console.log('array[j]',array[j])
+
+  //      			}
+       			
+  //   		}
+		// }
+
+
+    	// Spot.findOne({_id:req.body._id}, function(err,spot){
+    	// 	console.log('spot',spot)
+
+    	// })
+	Spot.remove({_id: req.body._id}, function(err, spot){
+				if(err){
+					console.log(err);
+				}
+				else{
+					res.json(spot);
+				}
+			})
+    	 
+
+
+    },
+
+
+
 	index_spots: function(req,res){
 
     	console.log("dashboard function sever controller users")
@@ -22,9 +70,9 @@ module.exports = {
 						if (data) { //and a user is returned (data is not null)...
 							
 							
-							console.log('spots1',spots)
+							// console.log('spots1',spots)
 							spots = data
-							console.log('spots2',spots)
+							// console.log('spots2',spots)
 							// res.render('dashboard',{users:users})
 							res.json(spots)
 
@@ -41,8 +89,8 @@ module.exports = {
     },
 	create: function(req,res)
 	{
-		console.log('inside spot create server controller')
-		console.log('POST DATA',req.body);
+		// console.log('inside spot create server controller')
+		// console.log('POST DATA',req.body);
 		// console.log('helo')
 
 		
@@ -87,7 +135,7 @@ module.exports = {
 					}
 					else
 					{
-						console.log('user*****************************',user)
+						// console.log('user*****************************',user)
 						res.json(spot);
 					}
 
@@ -118,7 +166,7 @@ module.exports = {
 		console.log('post data', req.body)
 		// { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] }
 		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice}]},function(err,result){
-			console.log('result*********************',result)
+			// console.log('result*********************',result)
 			// User.findOne({_id:result._user})
 			res.json(result);
 		})

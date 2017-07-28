@@ -1,11 +1,37 @@
 app.controller('user_controller', ['$scope','$cookies','$location','$anchorScroll','$routeParams','user_factory',
 
     
-// $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
  
     function($scope,$cookies,$location,$anchorScroll,$routeParams,user_factory)
     {
+
+      // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+      // $scope.username = "some name";
+      // $scope.creator = "some name";
+
+      $scope.Delete_spot = function(spot){
+        // console.log('$scope.spots', $scope.spots)
+        // console.log(spot);
+        // var index = $scope.spots.indexOf(spot);
+        // console.log('index',index)
+        // $scope.spots.splice(index, 1);     
+
+        user_factory.Delete_spot(spot, function(data){
+          location.reload();
+          // console.log(data);
+        })
+      }
+
+      // $scope.Delete_spot = function(spot) { 
+      //     var index = $scope.spots.indexOf(spot);
+      //     $scope.spots.splice(index, 1);     
+      //   }
+
+      $scope.showSomething = function(input1,input2) {
+           return input1 == input2 ? 'Cancel' : '';
+      };
    
       console.log('user_controller loaded');
 

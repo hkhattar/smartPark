@@ -11,27 +11,192 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body> -->
-  <nav class="white" role="navigation">
+  <nav  class=" teal lighten-2" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">parkAtEase</a>
+      <a id="logo-container" href="#" class="brand-logo">park@Ease </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#sign_up">Sign Up</A> </li> 
+        <!-- <li><a href="#about">About Us</a></li> -->
+        <!-- <li><a href="#sign_up">Sign Up</a> </li>  -->
         <!-- <li><a href="http://34.211.29.202/#/sign_up"></a></li> -->
-        <li><a href="#log_in">Log In</a></li>
-        <li><a href="/logout">Log Out</a></li>
-       <!--  <li><a ng-click="scrollTo('foo')">Foo</a></li> 
-        <li> <a href="#anchorLinkID" target="_self">Go to inpage section</a></li>  -->
+        <!-- <li><a href="#log_in">Log In</a></li> -->
+        <li><a  href="/logout"><i class="large material-icons">insert_chart</i></a></li>
+
+        <!-- <li><a ng-click="scrollTo('foo')">Foo</a></li>  -->
+        <!-- <li> <a href="#anchorLinkID" target="_self">Go to inpage section</a></li>  -->
 
 
       </ul>
 
-      <ul id="nav-mobile" class="side-nav">
+     <!--  <ul id="nav-mobile" class="side-nav">
         <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </ul> -->
+      <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
     </div>
   </nav>
+
+<!-- <div style="display: inline-block"> -->
+
+
+<!-- <div class="parallax-container"> -->
+      <!-- <div class="parallax" id="background4"></div> -->
+ 
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Parking has a NEW FRIEND</h1>
+
+    </div>
+  </div>
+
+<div id='parent_div_1'>
+  <div class ='child_div_1'>
+    <div class="container">
+        <div class="row">
+          
+
+           <div class="col s11 m6 offset-m0">
+      <div class="card">
+        <div class="card-content">
+         
+          <form>
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Email" id="email" type="text" class="validate" ng-model='loginUser.email' name="email">
+                <label for="email" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Password" id="password" type="password" class="validate" ng-model='loginUser.password' name="password">
+                {{ error.message }}
+                <label for="password" class="active"></label>
+              </div>
+               <p ng-repeat="error in logErrors">{{ error }}</p>
+            </div>
+            <input type="submit" class="btn" value="LOGIN" ng-click='login()'>
+
+          </form>
+         
+        </div>
+        <div class="card-action">
+          <!-- <input type="submit" class="btn" value="LOGIN" ng-click='create_new_user()'> -->
+        <!--   <p>Don't have an account? 
+        <a href="#/sign_up">Sign Up</a></p>
+        <br> -->
+        </div>
+        
+
+      </div>
+    </div>
+
+
+ <!-- </div> -->
+ <!-- </div> -->
+ <!-- </div> -->
+ <!-- </div> -->
+
+<!-- </div>  -->
+
+<!-- <div style="display: inline-block"> -->
+
+<!-- <div id='parent_div_1'> -->
+  <!-- <div class ='child_div_1'> -->
+    <!-- <div class="container"> -->
+        <!-- <div class="row"> -->
+      
+
+      <!--   <div class="col s11 m6 offset-m0">
+          <div class="card">
+
+          </div>
+        </div> -->
+
+<!--  <div id="foo">Here you are</div>
+ <div id="_self">hello</div> -->
+          <div class="col s11 m6 offset-m0">
+              <div class="card">
+                <div class="card-content">
+                  <h5 class="header"> SIGN UP TO PARK OR SHARE </h5> 
+                  <a name="register">
+                 
+                    <form>
+                      <div class="row">
+                  
+                          <div class="input-field col s12">
+                          
+                            <input placeholder="First Name" id="firstname" type="text" class="validate" ng-model='user.f_name' name="name">
+                            <p class="error"> {{error.first}}</p> 
+                            <label for="firstname" class="active"></label>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Last Name" id="lastname" type="text" class="validate" ng-model='user.l_name'>
+                         <div class="error">{{error.last}}</div> 
+                          <label for="lastname" class="active"></label>
+                        </div>
+                      </div>
+                      
+                       <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Email" id="email" type="text" class="validate" ng-model='user.email'>
+                          <div class="error">{{error.email}}</div>
+                          <div class="error">{{log_get_error()}}</div> 
+                          <label for="email" class="active"></label>
+                        </div>
+                      </div>
+                        <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Password" id="password" type="password" class="validate"   ng-model='user.password'>
+                         <div class="error">{{error.password}}</div>
+                          <label for="password" class="active"></label>
+                        </div>
+                      </div>
+                        <div class="row">
+                        <div class="input-field col s12">
+                          <input placeholder="Confirm Password" id="confirm_password" type="password" class="validate" ng-model='user.confirm_password'>
+                        <div class="error"> {{error.confirm_password}}</div>
+                          <label for="confirm_password" class="active"></label>
+                        </div>
+                      </div>
+                      <p class="error">{{error.message}}</p> 
+                       <input type="submit"  class = "btn" value="Sign Up" ng-click='register_user()'>
+                    </form>
+                </div>
+                <div class="card-action">
+                 
+                <!--    <p>Already have an account? 
+                  <a href="#/log_in">Sign In</a></p>
+                  <br> -->
+                </div>
+               
+
+              </div>
+            </div>
+
+      </div>
+    </div>
+    <!-- </div> -->  
+    <!-- </div> -->
+  </div> <!-- child div -->
+ 
+</div> <!-- parent div -->
+
+<!-- </div> -->
+
+
+
+ <!-- </div> -->
+
+
+
+
+
+
+
+
+
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
@@ -39,7 +204,7 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Say Yes to Parking Spot</h1>
         <div class="row center">
-          <h5 class="header col s12 light">With parkAtEase, pay less and park fast, in a private parking spot </h5>
+          <h5 class="header col s12 light">With park@Ease, pay less and park fast, in a private parking spot </h5>
         </div>
         <div class="row center">
           <a href="http://34.211.29.202/#/sign_up" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
@@ -125,153 +290,22 @@
   </div>
 
 
-  <div class="parallax-container valign-wrapper">
+<!--   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
           <h5 class="header col s12 light">Happy Parking</h5>
         </div>
       </div>
-    </div>
+    </div> -->
    <!--  <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div> -->
-   <div class="parallax" id='background3'></div>
-  </div>
+  <!--  <div class="parallax" id='background3'></div>
+  </div> -->
 
 
 
 
-<div id='parent_div_1'>
-  <div class ='child_div_1'>
-    <div class="container">
-        <div class="row">
-      
 
-      <!--   <div class="col s11 m6 offset-m0">
-          <div class="card">
-
-          </div>
-        </div> -->
-
-
-<!--  <div id="foo">Here you are</div>
- <div id="_self">hello</div> -->
-          <div class="col s11 m12 offset-m0">
-              <div class="card">
-                <div class="card-content">
-                  <h5> SIGN UP TO PARK OR SHARE </h5> 
-                  <a name="register">
-                 
-                    <form>
-                      <div class="row">
-                    
-
-                          <div class="input-field col s12">
-                          <div class="error">{{error.message}}</div> 
-                         
-                            <input placeholder="First Name" id="firstname" type="text" class="validate" ng-model='user.f_name' name="name">
-                            <div class="error"> {{error.first}}</div> 
-                            <label for="firstname" class="active"></label>
-                          </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input placeholder="Last Name" id="lastname" type="text" class="validate" ng-model='user.l_name'>
-                         <div class="error">{{error.last}}</div> 
-                          <label for="lastname" class="active"></label>
-                        </div>
-                      </div>
-                        <div class="row">
-                        
-                      </div>
-                       <div class="row">
-                        <div class="input-field col s12">
-                          <input placeholder="Email" id="email" type="text" class="validate" ng-model='user.email'>
-                          <div class="error">{{error.email}}</div>
-                          <div class="error">{{log_get_error()}}</div> 
-                          <label for="email" class="active"></label>
-                        </div>
-                      </div>
-                        <div class="row">
-                        <div class="input-field col s12">
-                          <input placeholder="Password" id="password" type="password" class="validate"   ng-model='user.password'>
-                         <div class="error">{{error.password}}</div>
-                          <label for="password" class="active"></label>
-                        </div>
-                      </div>
-                        <div class="row">
-                        <div class="input-field col s12">
-                          <input placeholder="Confirm Password" id="confirm_password" type="password" class="validate" ng-model='user.confirm_password'>
-                        <div class="error"> {{error.confirm_password}}</div>
-                          <label for="confirm_password" class="active"></label>
-                        </div>
-                      </div>
-                       <input type="submit"  value="Sign Up" ng-click='register_user()'>
-                    </form>
-                </div>
-                <div class="card-action">
-                 
-                   <p>Already have an account? 
-                  <a href="#/log_in">Sign In</a></p>
-                  <br>
-                </div>
-               
-
-              </div>
-            </div>
-
-      </div>
-    </div>
-  </div>
- 
-</div>
-
-
-<div id='parent_div_1'>
-  <div class ='child_div_1'>
-    <div class="container">
-        <div class="row">
-          
-
-           <div class="col s11 m12 offset-m0">
-      <div class="card">
-        <div class="card-content">
-         
-          <form>
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Email" id="email" type="text" class="validate" ng-model='loginUser.email' name="email">
-                <label for="email" class="active"></label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Password" id="password" type="password" class="validate" ng-model='loginUser.password' name="password">
-                {{ error.message }}
-                <label for="password" class="active"></label>
-              </div>
-               <p ng-repeat="error in logErrors">{{ error }}</p>
-            </div>
-            <input type="submit" class="btn" value="LOGIN" ng-click='login()'>
-
-          </form>
-         
-        </div>
-        <div class="card-action">
-          <!-- <input type="submit" class="btn" value="LOGIN" ng-click='create_new_user()'> -->
-          <p>Don't have an account? 
-        <a href="#/sign_up">Sign Up</a></p>
-        <br>
-        </div>
-        
-
-      </div>
-    </div>
-
-
- </div>
- </div>
- </div>
- </div>
 
 
 
@@ -284,7 +318,7 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">parkAtEase is an app that provides the users with live updates on the
+          <p class="grey-text text-lighten-4">park@Ease is an app that provides the users with live updates on the
 available parking spots in the area of their interest.</p>
 
 
@@ -313,7 +347,7 @@ available parking spots in the area of their interest.</p>
 
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">parkAtease</a>
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">park@ease</a>
       </div>
     </div>
 

@@ -47,7 +47,19 @@ zip_code
 type_of_space
 number_of_spaces
 instructions -->
-<div class = 'container'>
+
+<div id='parent_div_1'>
+  <div class ='child_div_1'>
+    <div class="container">
+        <div class="row">
+          
+
+           <div class="col s11 m12 offset-m0">
+      <div class="card">
+        <div class="card-content">
+<!-- <div id='parent_div_1'> -->
+  <!-- <div class ='child_div_1'> -->
+<!-- <div class = 'container'> -->
 <h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
 
  <form >
@@ -88,7 +100,7 @@ instructions -->
                   <option value="Truck">Truck</option>
                </select>
         </div>
-      <input placeholder="Instructions" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
+      <input placeholder="Instructions/Description" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
       Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'>
       End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'>
       <div class="error">{{error.date}}</div>
@@ -99,11 +111,11 @@ instructions -->
 
 
 
-      Start Time: <input data-date-time-input="YYYY-MMM-DD" placeholder="Start Time" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
+      <!-- Start Time: <input data-date-time-input="YYYY-MMM-DD" placeholder="9:00 AM" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
 
       
-      End Time: <input placeholder="End Time" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
-
+      End Time: <input placeholder="5 PM" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
+ -->
 
     <div class="error">{{error.time}}</div>  
       <br>
@@ -131,7 +143,12 @@ instructions -->
 	<div class= 'card-block' id= "geometry"></div>
 
 </div> <!-- end of div class='container' -->
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <!-- <script>
 

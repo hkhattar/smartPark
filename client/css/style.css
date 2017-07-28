@@ -6,6 +6,21 @@
  * Made By MaterializeCSS.com
  */
 
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+@media only screen and (min-width: 601px)
+  .container {
+    width: 85%;
+}
+@media only screen and (min-width: 993px)
+  .container {
+    width: 70%;
+}
+
+
 #background1{
   background-image: url("/images/background1.jpg");
   
@@ -17,6 +32,21 @@
 #background3{
   background-image: url("/images/background3.jpg");
   
+}
+
+#background4{
+  background-image: url("/images/background4.jpeg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  
+}
+
+.bookings{
+border: 1px solid red;
+width:300px;
+height:300px;
+margin-left: 460px;
+word-wrap: break-word;
 }
 
 nav ul a,

@@ -5,6 +5,20 @@ app.factory('user_factory',function($http){
         var logged_in_user = {};
         var error = {}
 
+
+        factory.Delete_spot = function(spot, callback)
+        {
+          // console.log(spot);
+          // spots.splice(spots.indexOf(spots._id), 1);
+
+          console.log('spot',spot)
+          $http.post('/delete_spot', spot).then(function(data){
+
+            callback(spot);
+      
+          })
+        }
+
         factory.register_user = function(user,callback)
         {
           console.log('inside register user client factory')

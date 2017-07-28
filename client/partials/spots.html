@@ -101,6 +101,13 @@
     </script>
 <div id='map'></div>
 
+{{dash_user}}
+
+  
+
+
+
+
 <h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
 <div class="container">
  	<div class="row">
@@ -135,14 +142,15 @@
 								<th>Instructions</th>
 								<th>Start Date</th>
 								<th>End Date</th>
-								<th>Start Time</th>
-								<th>End Time</th>
+								<!-- <th>Start Time</th> -->
+								<!-- <th>End Time</th> -->
 								<th>Driver's License</th>
 								<th>Longitude</th>
 								<th>Latitude</th>
                 <th>Actions</th>
                 <th>Spot id</th>
                 <th>Spot owner</th>
+                <th>Actions</th>
 								
 							</tr>
 						</thead>
@@ -166,28 +174,23 @@
 								<td>{{spot.start_date | date}}</td>
                 <!-- <td ng-bind="spot.date | date: 'MMMM d, y'"></td> -->
 								<td>{{spot.end_date | date}} </td>
-								<td>{{spot.start_time | date:'h:mm' }}</td>
-								<td>{{spot.end_time | date:'h:mm' }}</td>
+								<!-- <td>{{spot.start_time | date:'h:mm' }}</td> -->
+								<!-- <td>{{spot.end_time | date:'h:mm' }}</td> -->
 								<td>{{spot.license}}</td>
 								<td>{{spot.lng}}</td>
 								<td>{{spot.lat}}</td>
                 <td><a href="#/spots/{{spot._id}}"  >Book</a></td>
                 <td>{{spot._id}}</td>
                 <td>{{spot._user}}</td>
+                 <!-- <span ng-show="spot._user == dash_user._id">Cancelll</span> -->
+                <!-- <td><span>{{showSomething(spot._user,dash_user._id)}}</span></td> -->
 
-
-
-
-
-
-
-
-
-
-								
-
-								
+                <!-- <td ng-if="spot._user == dashuser._id"><button ng-click="Delete(appt)">Cancel</button></td> -->
+								<!-- {{sopt._user === dashuser._id ? "it's true" : "it's false"}} -->
+                <td><button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button></td>
+              
 							</tr>
+
 						</tbody>
 					</table>
 

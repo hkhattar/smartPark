@@ -36,4 +36,6 @@ module.exports = function(app){
     app.get('/spots/:id',spots.show_spot);
 
     app.post('/zipcode',spots.zip_code);
+
+    app.post('/delete_spot',spots.delete)
 }
