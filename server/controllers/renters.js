@@ -87,7 +87,7 @@ create: function(req,res)
 
 							})
 							console.log('user saved',user)
-							res.json(user);
+							res.json({renter:user, owner:spot});
 						}
 					
 					
