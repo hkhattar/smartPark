@@ -45,7 +45,7 @@
 <br><br>
 <div class="bookings">
       <h5> Bookings made: </h5>  
-      <p>{{dash_user._rent_spots}}  </p>     
+      <p>{{dash_user._rent_spots.length}}  </p>     
       
 </div>
 
@@ -55,7 +55,7 @@
 <div class="bookings">
 
      <h5> Bookings Received: </h5>   
-     <p>{{dash_user._spots}}</p> 
+     <p>{{dash_user._spots.length}}</p> 
   
 </div>
 
@@ -65,7 +65,45 @@
 <!-- {{log_get_user()}} {{dash_user.l_name}}  -->
 
 
-{{dash_user}}
+<!-- {{dash_user}} -->
+
+<footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">park@Ease is an app that provides the users with live updates on the
+available parking spots in the area of their interest.</p>
 
 
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#/about">About Us</a></li>
+            <li><a class="white-text" href="#/dashboard">Profile</a></li>
+            <li><a class="white-text" href="#/spot/new">Rent your spot</a></li>
+            <li><a class="white-text" href="#/spots">Reserve Location</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#/">Home</a></li>
+            <li><a class="white-text" href="#!">Email</a></li>
+            <li><a class="white-text" href="#!">Phone</a></li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">park@ease</a>
+      </div>
+    </div>
+
+  </footer>
 

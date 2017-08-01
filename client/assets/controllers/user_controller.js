@@ -253,6 +253,8 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
             user_factory.geocode($scope.newSpot, location, user, function(data)
             {
               console.log('data************',data)
+              // $scope.dates = 'data'
+              console.log($scope.dates)
               $scope.address = 'Your address'+ ' " ' + data + ' " '
               $location.url('/spots');
             })
@@ -293,6 +295,59 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
         {
           console.log("inside create_renter_by_id if statement")
           $scope.error = {};
+          console.log($scope.newRenter)
+
+          function toDateStr(ts) {
+              let dataF = new Date();   dataF.setTime(ts);
+              let strDataF = dataF.toLocaleString();
+              return strDataF;
+        }
+
+          // then use it in your aggregation:
+          // db.Collection.aggregate([{ 
+          // }]).map( function(doc) { 
+          // doc['date'] = toDateStr(doc.timestamp);
+          // return doc;
+          // })
+          var firstdate = toDateStr($scope.newRenter.arriving_on)
+          console.log(firstdate)
+          var seconddate = toDateStr($scope.newRenter.departing_on)
+          console.log(seconddate)
+
+
+          $scope.differenceInDays = function() {
+
+              var dt1 = firstdate.split('/')
+              
+                var   dt2 = seconddate.split('/')
+              
+              var x = dt1[2].split(',')[0]
+              console.log(dt2)
+              var y = dt2[2].split(',')[0]
+console.log('ppppppp')
+              dt1.pop()
+              dt2.pop()
+              dt1.push(x)
+              dt2.push(y)
+
+              console.log(x)
+                  // dt1 = dtt1[2].split(','),
+                  // dt2 = dtt2[2].split(',')
+                  // dt1.pop()
+                  // dt2.pop()
+                  console.log(dt1)
+                  one = new Date(dt1[2], dt1[0]-1, dt1[1]),
+                  two = new Date(dt2[2], dt2[0]-1, dt2[1]);
+
+              var millisecondsPerDay = 1000 * 60 * 60 * 24;
+              var millisBetween = two.getTime() - one.getTime();
+              var days = millisBetween / millisecondsPerDay;
+              console.log(Math.floor(days))
+              return Math.floor(days);      
+        };
+          $scope.price = 6 *  ($scope.differenceInDays()+1)
+
+
           
           var user = user_factory.log_get_user();
           console.log('*************user',user)
@@ -300,6 +355,13 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
           {
             console.log("routeParams.id", $routeParams.id)
             console.log('data',data)
+
+             if($('#1').css('display')!='none'){
+              $('#2').html("You have successfully booked and payed $ " + $scope.price).show().siblings('div').hide();
+              }else if($('#2').css('display')!='none'){
+              $('#1').show().siblings('div').hide();
+              }
+            // $location.url('/success')
         //     $scope.renter = data;
         //     // console.log("Data:")
         //     setRenter(data);

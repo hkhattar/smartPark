@@ -23,21 +23,35 @@
   <h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
 
 
-  
 
-<div class="container">
+
+
+
+<div class="container" >
   <div class="row">
-      <div class="col s18 m20 offset-m0">
+      <div class="col s18 m20 offset-m2">
         <div class="card">
             <div class="card-content">
-            <h4>COMPLETE PAYMENT</h4> 
+            <div id="1">
+            <h4 >COMPLETE PAYMENT</h4> 
+              
               <form>
               <br>
               Arriving on:
+            <input  id="arriving_on"  type ="date" class="validate" ng-model='newRenter.arriving_on'  >
               <br>
               Departing on:
-              <br>
+              <input  id="departing_on" type="date" class="validate" ng-model='newRenter.departing_on'>
+              <!-- <br> -->
+              <!-- Start date: {{spot.start_date | date}} -->
+              <!-- <br> -->
+              <!-- End date: {{spot.end_date | date}} -->
+              <!-- <br> -->
+              <!-- Available dates: {{dates }} -->
+              <!-- <br> -->
               Listing: {{spot.street}}, {{spot.zip_code}}
+              <br>
+              Price: $6/hour {{price}}
               <br>
                 <!-- <input type="text" name="f_name" value="{{dash_user.f_name}}">
                 <input type="text" name="l_name" value="{{dash_user.l_name}}">
@@ -48,7 +62,7 @@
                 </div> -->
 
                 Vehicle:  <br>
-                {{dash_user.type_of_car}}            
+                <!-- {{dash_user.type_of_car}}             -->
                  <input  id="type_of_car" type="text" class="validate" ng-model='newRenter.type_of_car'>
                                <div class="error">{{error.type_of_car}}</div>
 
@@ -59,7 +73,7 @@
 
               
                 License Plate: <br>
-                {{dash_user.license_plate}}
+                <!-- {{dash_user.license_plate}} -->
                 <input  id="license_plate" type="text" class="validate" ng-model='newRenter.license_plate'>
                                <div class="error">{{error.license_plate}}</div>
 
@@ -72,7 +86,7 @@
 
 
                       Contact Number: <br>
-                      {{dash_user.contact}}
+                      <!-- {{dash_user.contact}} -->
                 <!-- <span ng-show="{{dash_user.contact.length}} > 5 "><input type="text" name="contact" value="{{dash_user.contact}}"></span> -->
 
 
@@ -83,7 +97,13 @@
                    <input type="submit"  value="Complete and Pay " ng-click='create_renter_by_id()'>
 
               </form>
-          
+
+              <!-- {{dates}} -->
+          </div>
+
+          <div class='left-align' id="2" style="display:none;">
+            
+          </div>
 
         </div> <!-- container -->
       </div> <!-- row -->
@@ -92,4 +112,44 @@
 </div> <!-- card-content -->
 
 
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">park@Ease is an app that provides the users with live updates on the
+available parking spots in the area of their interest.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+           <li><a class="white-text" href="#/about">About Us</a></li>
+            <li><a class="white-text" href="#/dashboard">Profile</a></li>
+            <li><a class="white-text" href="#/spot/new">Rent your spot</a></li>
+            <li><a class="white-text" href="#/spots">Reserve Location</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#/">Home</a></li>
+            <li><a class="white-text" href="#!">Email</a></li>
+            <li><a class="white-text" href="#!">Phone</a></li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">park@ease</a>
+      </div>
+    </div>
+
+  </footer>
 

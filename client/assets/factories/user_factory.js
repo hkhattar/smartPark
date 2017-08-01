@@ -150,9 +150,12 @@ app.factory('user_factory',function($http){
 
           $http.post('/spots',{user: user, spot:newSpot, lat:lat, lng: lng}).then(function(returned_data)
           {
+            console.log(returned_data)
             if (typeof(callback) == 'function')
           {
-            callback(returned_data.data);
+            // callback(returned_data.data.dates);
+              callback(returned_data.data);
+
             console.log('returned_data',returned_data)
           }//end of if type of callback is function
           })//end of http post

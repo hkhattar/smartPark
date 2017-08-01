@@ -37,6 +37,7 @@ var SpotSchema = new mongoose.Schema({
 	license: {type: String},
 	lat:{type:Number},
 	lng:{type:Number},
+	available:{type:Boolean},
 	_renters:[{type:Schema.Types.ObjectId, ref: 'User'}],
 
 	// entry_time:{}

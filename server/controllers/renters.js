@@ -33,6 +33,7 @@ create: function(req,res)
 			// user._rent_spots =  req.params.id
 
 			spot._renters.push(user);
+			spot.available = 0;
 			// spot._renters = req.body.user._id
 
 			// var renter = new User({contact:req.body.renter.contact, license_plate:req.body.renter.license_plate, type_of_car:req.body.renter.type_of_car});
@@ -53,7 +54,7 @@ create: function(req,res)
 							client.sendMessage({
 								to:'+' + spot.contact,
 								from:'+18587804791',
-								body:'Is your spot available?'
+								body: user.f_name + ' booked your spot. Contact-  ' + req.body.renter.contact + ' License Plate- ' + req.body.renter.license_plate
 
 							}, function(err,data){
 								if (err)
@@ -62,6 +63,25 @@ create: function(req,res)
 									}
 								else
 									{
+						
+										console.log('res',res)
+									}
+
+							})
+
+							client.sendMessage({
+								to:'+' + req.body.renter.contact,
+								from:'+18587804791',
+								body: 'You booked '+ spot.f_name + ' spot. Contact-  ' + spot.contact 
+
+							}, function(err,data){
+								if (err)
+									{
+										console.log('err',err)
+									}
+								else
+									{
+						
 										console.log('res',res)
 									}
 

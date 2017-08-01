@@ -61,7 +61,7 @@ module.exports = {
     	console.log("dashboard function sever controller users")
 
     	  var spots = 'hi';
-    	  Spot.find({ //attempt to find a user in the DB based on the entered email address
+    	  Spot.find({ available:1//attempt to find a user in the DB based on the entered email address
 						
 					}, (err, data) => {
 					if (err) { //if an error is returned...
@@ -114,12 +114,55 @@ module.exports = {
         // console.log('address*******************', address)
 
 		User.findOne({_id:req.body.user._id},function(err,user){
-			var spot = new Spot({contact:req.body.spot.contact,street:req.body.spot.street, house_number:req.body.spot.house_number,license:req.body.spot.license, zip_code:req.body.spot.zip_code, type_of_space:req.body.spot.type_of_space, number_of_spaces:req.body.spot.number_of_spaces,owner_vehicle_choice:req.body.spot.owner_vehicle_choice, instructions:req.body.spot.instructions, start_date:req.body.spot.start_date, end_date:req.body.spot.end_date, start_time:req.body.spot.start_time, end_time:req.body.spot.end_time, license:req.body.spot.license, lat:req.body.lat, lng:req.body.lng, });
+			var spot = new Spot({available:1, contact:req.body.spot.contact,street:req.body.spot.street, house_number:req.body.spot.house_number,license:req.body.spot.license, zip_code:req.body.spot.zip_code, type_of_space:req.body.spot.type_of_space, number_of_spaces:req.body.spot.number_of_spaces,owner_vehicle_choice:req.body.spot.owner_vehicle_choice, instructions:req.body.spot.instructions, start_date:req.body.spot.start_date, end_date:req.body.spot.end_date, start_time:req.body.spot.start_time, end_time:req.body.spot.end_time, license:req.body.spot.license, lat:req.body.lat, lng:req.body.lng, });
+			
+			// var date = new Date({})
+
 			spot._user = user._id;
 			// spot.owner = user.f_name
 			spot.f_name = user.f_name
 			spot.l_name = user.l_name
 
+			// var date = currentDate()
+			// var date = Date.now()
+			// console.log('date',date)
+			// console.log(typeof(req.body.spot.start_date))
+
+//GET DATES ARRAY FROM START DATE TO END DATE
+			Date.prototype.addDays = function(days) 
+			{
+    			var dat = new Date(this.valueOf())
+    			dat.setDate(dat.getDate() + days);
+    			return dat;
+			}
+
+			function getDates(startDate, stopDate) 
+			{
+    			var dateArray = new Array();
+    			var currentDate = startDate;
+    			while (currentDate <= stopDate) 
+    			{
+        			dateArray.push( new Date (currentDate) )
+        			currentDate = currentDate.addDays(1);
+    			}
+    			return dateArray;
+			}
+
+//CONVERT UNIX TIMESTAMP TO READABLE DATE/TIME
+			// var timestamp = 1301090400,
+			// date = new Date(timestamp * 1000),
+			// datevalues = [
+   // 				date.getFullYear(),
+   // 				date.getMonth()+1,
+   // 				date.getDate(),
+   // 				date.getHours(),
+   // 				date.getMinutes(),
+   // 				date.getSeconds(),
+			// 	];
+			// 	alert(datevalues);
+			
+			// var dates = getDates(req.body.spot.start_date,req.body.spot.end_date)
+			// console.log('dates',dates)
 
 			// console.log("spot._")
 			user._spots.push(spot);
@@ -135,8 +178,11 @@ module.exports = {
 					}
 					else
 					{
-						// console.log('user*****************************',user)
+						console.log('spot*****************************',spot)
+						// var dates = getDates(spot.start_date,spot.end_date)
+						// console.log(dates)
 						res.json(spot);
+						// res.json({spot:spot, dates:dates})
 					}
 
 				})

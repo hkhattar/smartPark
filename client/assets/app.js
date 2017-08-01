@@ -51,7 +51,10 @@ $routeProvider
           templateUrl: 'partials/spot.html',
           controller: 'user_controller'
         })
-
+         .when('/success',{
+          templateUrl: 'partials/success.html',
+          controller: 'user_controller'
+        })
         
 
 });
