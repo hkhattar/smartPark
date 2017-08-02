@@ -468,7 +468,7 @@ console.log('ppppppp')
             console.log('data',data)
 
              if($('#1').css('display')!='none'){
-              $('#2').html("You have successfully booked and payed $ " + $scope.price).show().siblings('div').hide();
+              $('#2').html("<h3>You have successfully booked and payed $ " + $scope.price + "</h3>").show().siblings('div').hide();
               }else if($('#2').css('display')!='none'){
               $('#1').show().siblings('div').hide();
               }
