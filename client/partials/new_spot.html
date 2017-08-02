@@ -100,7 +100,15 @@ instructions -->
                   <option value="Truck">Truck</option>
                </select>
         </div>
-      <input placeholder="Instructions/Description" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'>
+        <!-- <br> -->
+        <!-- <br> -->
+        <div class="row">
+          <div class="input-field col s12">
+           <!-- <label for="textarea1">Description/Instructions</label> -->
+        <textarea id="instructions"  placeholder="Description/Instructions" ng-model="newSpot.instructions" class="materialize-textarea" data-length="120"></textarea>
+        
+          </div>
+      <!-- <input placeholder="Instructions/Description" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'> -->
       <!-- Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'> -->
       <!-- End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'> -->
       <!-- <div class="error">{{error.date}}</div> -->

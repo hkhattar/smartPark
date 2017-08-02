@@ -212,7 +212,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
       $scope.geocode = function()
       {
 
-        $scope.error = {message: 'All fields are required'};
+        // $scope.error = {message: 'All fields are required'};
        
         if($scope.newSpot.contact.length < 10)
         {
@@ -228,12 +228,12 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
           $scope.error = {house_number: 'Invalid house_number'};
 
         }
-      else if ($scope.newSpot.start_date > $scope.newSpot.end_date ){
-        $scope.error = {date: 'End date should be greater than start date'}
-        }
-         else if ($scope.newSpot.start_time > $scope.newSpot.end_time ){
-        $scope.error = {time: 'End time should be greater than start time'}
-        }
+      // else if ($scope.newSpot.start_date > $scope.newSpot.end_date ){
+        // $scope.error = {date: 'End date should be greater than start date'}
+        // }
+         // else if ($scope.newSpot.start_time > $scope.newSpot.end_time ){
+        // $scope.error = {time: 'End time should be greater than start time'}
+        // }
 
         else if (!$scope.newSpot.license.match(driver_licenseRegex)) { //if the house number entered does not match regex...
           $scope.error = {driver_license: 'Invalid driver license number'};
