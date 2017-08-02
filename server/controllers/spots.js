@@ -218,7 +218,7 @@ module.exports = {
 		console.log('diffDays',diffDays)
 		var price = diffDays * 6
 		console.log('price',price)
-		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice}]},function(err,result){
+		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice},{available:1}]},function(err,result){
 			// console.log('result*********************',result)
 			// User.findOne({_id:result._user})
 			res.json(result);
