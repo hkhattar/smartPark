@@ -51,6 +51,10 @@ word-wrap: break-word;
 .height{
   height:1500px;
 }
+.small_height
+{
+  height:500px;
+}
 
 nav ul a,
 nav .brand-logo {
