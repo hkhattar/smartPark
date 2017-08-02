@@ -48,6 +48,9 @@ height:100px;
 margin-left: 460px;
 word-wrap: break-word;
 }
+.height{
+  height:1500px;
+}
 
 nav ul a,
 nav .brand-logo {
