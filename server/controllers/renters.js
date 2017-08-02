@@ -24,7 +24,15 @@ create: function(req,res)
 		User.findOne({_id:req.body.user._id},function(err,user){
 			console.log('user______________________',user)
 			
+			//price calculation
 			console.log('spot.contact<<<<<<<',spot.contact)
+			var date1 = new Date(req.body.renter.start_date);
+			var date2 = new Date(req.body.renter.end_date)
+			var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+			var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+			console.log('diffDays',diffDays)
+			var price = diffDays * 6
+			console.log('price',price)
 			user.contact = req.body.renter.contact
 			user.license_plate = req.body.renter.license_plate
 			user.type_of_car = req.body.renter.type_of_car
@@ -93,7 +101,7 @@ create: function(req,res)
 							response.street = spot.street;
 							response.house_number = spot.house_number;
 							response.instructions = spot.instructions;
-							response.price = '6'
+							response.price = price
 							console.log('user saved',user.f_name)
 							res.json(response);
 						}

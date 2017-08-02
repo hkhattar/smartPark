@@ -211,6 +211,13 @@ module.exports = {
 	zip_code: function(req,res){
 		console.log('post data', req.body)
 		// { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] }
+		var date1 = new Date(req.body.start_date);
+		var date2 = new Date(req.body.end_date)
+		var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+		console.log('diffDays',diffDays)
+		var price = diffDays * 6
+		console.log('price',price)
 		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice}]},function(err,result){
 			// console.log('result*********************',result)
 			// User.findOne({_id:result._user})
