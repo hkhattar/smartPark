@@ -86,8 +86,16 @@ create: function(req,res)
 									}
 
 							})
-							console.log('user saved',user)
-							res.json({renter:user, owner:spot});
+							var response = {}
+							response.f_name = spot.f_name;
+							response.l_name = spot.l_name;
+							response.contact = spot.contact;
+							response.street = spot.street;
+							response.house_number = spot.house_number;
+							response.instructions = spot.instructions;
+							response.price = '6'
+							console.log('user saved',user.f_name)
+							res.json(response);
 						}
 					
 					
