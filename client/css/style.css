@@ -9,7 +9,7 @@
 .container {
   margin: 0 auto;
   max-width: 1280px;
-  width: 90%;
+  width: 100%;
 }
 @media only screen and (min-width: 601px)
   .container {
@@ -18,6 +18,10 @@
 @media only screen and (min-width: 993px)
   .container {
     width: 70%;
+}
+.address
+{
+  font-size: 24px;
 }
 
 
@@ -39,6 +43,20 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   
+}
+
+#map {
+    height:420px;
+    width:600px;
+}
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+h2 {
+    margin-bottom:0;
+    margin-top: 0;
 }
 
 .bookings{

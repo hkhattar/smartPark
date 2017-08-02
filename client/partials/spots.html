@@ -28,7 +28,7 @@
 <!-- <div id='map' style="height:400px;
       width:100%;"></div> -->
 
-<script >
+<!-- <script >
   function initMap(){
     //map options
     var options = {
@@ -99,7 +99,7 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASY6dXR9H36_HmLXF6-wszEhsXN8gGRA4&callback=initMap">
     </script>
-<div id='map'></div>
+<div id='map'></div> -->
 
 <!-- {{dash_user}} -->
 
@@ -109,9 +109,20 @@
 
 
 <h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
-<div  class="container">
+
+
+<!-- <div ng-app="mapsApp" ng-controller="MapCtrl"> -->
+    <!-- <div id="map"> <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+    </div></div> -->
+   
+<!-- </div> -->
+
+
+<div  class="container" >
  	<div class="row">
-   		<div class="col s18 m20 offset-m1">
+
+   		<div class="col s18 m20 offset-m3">
      		<div class="card">
         		<div class="card-content">
         		<h4 class='center-align'>Spots</h4>
@@ -127,19 +138,19 @@
             </div>
           </nav>
 					<table id="searchTextResults" class='highlight'>
-						<thead>
-							<tr>
+						<!-- <thead> -->
+							<!-- <tr> -->
 								<!-- <th>Contact</th> -->
-								<th>Street</th>
-								<th>House Number</th>
-								<th>Zip Code</th>
+								<!-- <th>Street</th> -->
+								<!-- <th>House Number</th> -->
+								<!-- <th>Zip Code</th> -->
 								<!-- <th>Country</th> -->
 								<!-- <th>State</th> -->
 								<!-- <th>City</th> -->
-								<th>Type of Space</th>
+								<!-- <th>Type of Space</th> -->
 								<!-- <th>Number of spaces</th> -->
-								<th>Owner Vehicle Choice</th>
-								<th>Instructions</th>
+								<!-- <th>Owner Vehicle Choice</th> -->
+								<!-- <th>Instructions</th> -->
 								<!-- <th>Start Date</th> -->
 								<!-- <th>End Date</th> -->
 								<!-- <th>Start Time</th> -->
@@ -147,13 +158,13 @@
 								<!-- <th>Driver's License</th> -->
 								<!-- <th>Longitude</th> -->
 								<!-- <th>Latitude</th> -->
-                <th>Actions</th>
+                <!-- <th>Actions</th> -->
                 <!-- <th>Spot id</th> -->
                 <!-- <th>Spot owner</th> -->
-                <th>Actions</th>
+                <!-- <th>Actions</th> -->
 								
-							</tr>
-						</thead>
+							<!-- </tr> -->
+						<!-- </thead> -->
 						<tbody>
 							<tr>
 								
@@ -161,16 +172,25 @@
 							<tr ng-repeat='spot in spots | filter:searchText' >
 <!-- <hr> -->
 								<!-- <td>{{spot.contact}}</td> -->
-								<td>{{spot.street}}</td>
-								<td>{{spot.house_number}}</td>
-								<td>{{spot.zip_code}}</td>
+								<td>
+                <hr>  <p class="address"><b>{{spot.type_of_space}} ON {{spot.street}}, {{spot.zip_code}} </b></p>   
+                <i> RESERVABLE</i>  <br> <br>
+                <a href="#/spots/{{spot._id}}" class="waves-effect waves-light btn-large"  >Book for $6/day</a> <br>
+<!-- <hr> --> <br>
+                <span style="color:green;">Space Description</span>   <br>
+                <p> {{spot.instructions}} </p>
+                 <br>
+                <button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button>
+                </td>
+								<!-- <td>{{spot.house_number}}</td> -->
+								<!-- <td>{{spot.zip_code}}</td> -->
 								<!-- <td>{{spot.country}}</td> -->
 								<!-- <td>{{spot.state}}</td> -->
 								<!-- <td>{{spot.city}}</td> -->
-								<td>{{spot.type_of_space}}</td>
+								<!-- <td>{{spot.type_of_space}}</td> -->
 								<!-- <td>{{spot.number_of_spaces}}</td> -->
-								<td>{{spot.owner_vehicle_choice}}</td>
-								<td>{{spot.instructions}}</td>
+								<!-- <td>{{spot.owner_vehicle_choice}}</td> -->
+								<!-- <td>{{spot.instructions}}</td> -->
 								<!-- <td>{{spot.start_date | date}}</td> -->
                 <!-- <td ng-bind="spot.date | date: 'MMMM d, y'"></td> -->
 								<!-- <td>{{spot.end_date | date}} </td> -->
@@ -179,7 +199,7 @@
 								<!-- <td>{{spot.license}}</td> -->
 								<!-- <td>{{spot.lng}}</td> -->
 								<!-- <td>{{spot.lat}}</td> -->
-                <td><a href="#/spots/{{spot._id}}"  >Book</a></td>
+                <!-- <td><a href="#/spots/{{spot._id}}"  >Book</a></td> -->
                 <!-- <td>{{spot._id}}</td> -->
                 <!-- <td>{{spot._user}}</td> -->
                 <!-- <td>{{dates}}</td> -->
@@ -188,8 +208,8 @@
 
                 <!-- <td ng-if="spot._user == dashuser._id"><button ng-click="Delete(appt)">Cancel</button></td> -->
 								<!-- {{sopt._user === dashuser._id ? "it's true" : "it's false"}} -->
-                <td><button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button></td>
-             
+                <!-- <td><button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button></td> -->
+            
 							</tr>
 
 						</tbody>
