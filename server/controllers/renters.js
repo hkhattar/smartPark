@@ -31,7 +31,7 @@ create: function(req,res)
 			var timeDiff = Math.abs(date2.getTime() - date1.getTime());
 			var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 			console.log('diffDays',diffDays)
-			var price = diffDays * 6
+			var price = (diffDays+1) * 6
 			console.log('price',price)
 			user.contact = req.body.renter.contact
 			user.license_plate = req.body.renter.license_plate
