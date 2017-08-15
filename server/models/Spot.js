@@ -1,28 +1,16 @@
-
-
-
-console.log('park.model')
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-
-
-
-
 var SpotSchema = new mongoose.Schema({
 	
-	
 	_user: {type:Schema.Types.ObjectId, ref: 'User'},
-	// owner: {type:String},
 	f_name: {type:String},
 	l_name: {type:String},
 	success:{type:Boolean, default: false},
 	contact:{type:Number},
 	street:{type:String},
 	house_number:{type:Number},
-	city:{type:String,default: 'San Jose'},
+	city:{type:String,default: 'San Francisco'},
 	state:{type:String, default: 'California'},
 	country:{type:String, default: 'United States'},
 	zip_code:{type:String},
@@ -39,14 +27,9 @@ var SpotSchema = new mongoose.Schema({
 	lng:{type:Number},
 	available:{type:Boolean},
 	_renters:[{type:Schema.Types.ObjectId, ref: 'User'}],
-
-	// entry_time:{}
-	
 	
 });
 
-
-
-mongoose.model('Spot',SpotSchema); //attaches the User constant variable to mongoose
+mongoose.model('Spot',SpotSchema); //attaches the Spot constant variable to mongoose
 
 

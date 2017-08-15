@@ -1,18 +1,7 @@
-
-
-
-console.log('park.model')
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-
-
-
-
 var UserSchema = new mongoose.Schema({
-	
 	
 	success:{type:Boolean, default: false},
 	f_name:{type:String},
@@ -33,8 +22,6 @@ var UserSchema = new mongoose.Schema({
 	_rent_spots:[{type:Schema.Types.ObjectId, ref: 'Spot'}],
 	
 });
-
-
 
 mongoose.model('User',UserSchema); //attaches the User constant variable to mongoose
 

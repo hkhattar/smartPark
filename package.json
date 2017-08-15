@@ -1,7 +1,7 @@
 {
-  "name": "login_and_registration",
+  "name": "park at ease",
   "version": "1.0.0",
-  "description": "Coding Dojo MEAN assignment Login and Registration",
+  "description": " Park At Ease",
   "main": "server.js",
   "scripts": {
     "babel-node": "babel-node",

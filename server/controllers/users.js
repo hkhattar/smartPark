@@ -318,15 +318,11 @@ module.exports = {
 										}
 								else
 								{
-								 // res.json({
-				     //            _id: user._id
-				     //        	})
-
+					
 				     				req.session.user = data; //create a session variable to store the returned data (new user)
 				     				console.log('data',data)
 				     				res.cookie('dash_user', data);
 				     			
-
 									req.session.save(err2 => { //save session
 										if (err2) 
 										{ //if there's an error upon saving session...
