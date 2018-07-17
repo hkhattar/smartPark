@@ -14,9 +14,6 @@ var Spot = mongoose.model('Spot');
 
 module.exports = {
 
-	
-
-	
 
 	index: function(req,res){
 	
