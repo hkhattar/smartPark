@@ -3,15 +3,9 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
  
     function($scope,$cookies,$location,$anchorScroll,$routeParams,user_factory)
     {
+      console.log('user_controller loaded');
 
-
-
-
-
-
-
-
-
+//TRIED TO IMPLEMENT MAPS
 // // var cities = [
 // //     {
 // //         city : 'Toronto',
@@ -96,26 +90,6 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
 //         google.maps.event.trigger(selectedMarker, 'click');
 //     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    
       // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
@@ -123,36 +97,22 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
       // $scope.creator = "some name";
 
       $scope.Delete_spot = function(spot){
-        // console.log('$scope.spots', $scope.spots)
-        // console.log(spot);
-        // var index = $scope.spots.indexOf(spot);
-        // console.log('index',index)
-        // $scope.spots.splice(index, 1);     
-
         user_factory.Delete_spot(spot, function(data){
           location.reload();
-          // console.log(data);
         })
       }
-
-      // $scope.Delete_spot = function(spot) { 
-      //     var index = $scope.spots.indexOf(spot);
-      //     $scope.spots.splice(index, 1);     
-      //   }
 
       $scope.showSomething = function(input1,input2) {
            return input1 == input2 ? 'Cancel' : '';
       };
    
-      console.log('user_controller loaded');
-
       $scope.scrollTo = function(id) 
       {
         $location.hash(id);
         $anchorScroll();
       }
 
-       $scope.dash_user = {};
+      $scope.dash_user = {};
       user_factory.checkSesh(data => {
         if (!data)
         {
@@ -163,9 +123,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
           $scope.dash_user = data;
         }
         return data;
-        
-
-                        })
+      })
 
 
       var pwordRegex =
@@ -174,10 +132,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
       
       var house_numberRegex= /^\d+[a-zA-Z]*$/
       var driver_licenseRegex = /^[A-Z]{1}\d{7}$/
-      // var users = [];
-      
       $scope.users = 'm';
-
      $scope.register_user = function()
       {
         $scope.error = {message: 'All fields are required'};
@@ -207,11 +162,8 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
 
         else
         {
-          // console.log('inside register user client controller');
           $scope.error = {};
-          // console.log('$scope.user in belt controller before factory',$scope.user)
           user_factory.register_user($scope.user,setUsers);
-          // console.log('$scope.user in belt controller after factory',$scope.user)
           $scope.user = {};
           $location.url('/dashboard');
         }
@@ -220,22 +172,15 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
 
         $scope.index_user = function(){
         user_factory.index_user(function(data){
-          console.log('data',data)
           $scope.users = 'lll';
-          console.log('$scope.users',$scope.users)
-          // $scope.user = {};
         })
       }
-      // $scope.users = 'hhii';
-      function setUsers(data)
 
+      function setUsers(data)
       {
-        console.log('data',data)
         if(data.already){
           $scope.already = data.already
-          console.log('$scope.already',$scope.already)
           error = data.already
-
         }
         logged_in_user = data;
       }
@@ -243,31 +188,19 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
       $scope.log_get_error = function()
       {
         var error = user_factory.log_get_error();
-        console.log("0000000000")
-        console.log('error',error)
         return error.already;
-
-        
       }
        $scope.log_get_user = function()
       {
         var user = user_factory.log_get_user();
-        console.log("0000000000")
-        console.log('user',user)
         return user.f_name;
-
-        
       }
 
 
-        $scope.login = () => { //when the user hits the login button...
-      console.log('inside scope.login')
+      $scope.login = () => { //when the user hits the login button...
       $scope.logErrors = []; //clear out all previous login errors
-      // console.log('$scope.loginUser',$scope.loginUser)
       user_factory.login($scope.loginUser, data => { //run the userFactory.login method and pass the entered user information and a callback function
-        console.log('data',data)
         if (data.errors) { //if the returned data has an errors key...
-          
           for (let key in data.errors) { //for every key in the data.errors...
             $scope.logErrors.push(data.errors[key].message); //push these errors to the logErrors array
           }
@@ -282,25 +215,13 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
       }); //userFactory.login
     }; //$scope.login
 
-
-    // function setSpots(data)
-    //   {
-    //     $scope.spots = data;
-    //   }
-
-
       $scope.add_spot = function()
       {
-        console.log('inside add_spot')
         if($scope.newSpot.contact.length == 10)
         {
-          // console.log('inside create question clinet controller');
           $scope.error = {};
-          // console.log('$scope.newQuestion',$scope.newQuestion)
           var user = user_factory.log_get_user();
-          console.log('user',user)
           user_factory.add_spot($scope.newSpot,user,setSpots);
-
           $scope.newSpot = {};
           $location.url('/spots');
         }
@@ -309,110 +230,46 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
         }
      
       }
-//      contact
-// street
-// house_number
-// city
-// state
-// country
-// zip_code
-// type_of_space
-// number_of_spaces
-// instructions 
+
 
       $scope.geocode = function()
-      {
-
-        // $scope.error = {message: 'All fields are required'};
-       
-        if($scope.newSpot.contact.length < 10)
-        {
+      {   
+        if($scope.newSpot.contact.length < 10) {
           $scope.error = {contact: 'Invalid phone number'};
-          
-        }
-        else if($scope.newSpot.street.length < 5)
-        {
+        } else if($scope.newSpot.street.length < 5) {
           $scope.error = {street: 'Invalid street'};
-          
-        }
-        else if (!$scope.newSpot.house_number.match(house_numberRegex)) { //if the house number entered does not match regex...
+        } else if (!$scope.newSpot.house_number.match(house_numberRegex)) { //if the house number entered does not match regex...
           $scope.error = {house_number: 'Invalid house_number'};
-
-        }
-      // else if ($scope.newSpot.start_date > $scope.newSpot.end_date ){
-        // $scope.error = {date: 'End date should be greater than start date'}
-        // }
-         // else if ($scope.newSpot.start_time > $scope.newSpot.end_time ){
-        // $scope.error = {time: 'End time should be greater than start time'}
-        // }
-
-        else if (!$scope.newSpot.license.match(driver_licenseRegex)) { //if the house number entered does not match regex...
+        } else if (!$scope.newSpot.license.match(driver_licenseRegex)) { //if the house number entered does not match regex...
           $scope.error = {driver_license: 'Invalid driver license number'};
-
-        }
-        else
-        {
-            console.log('inside geocode')
-            console.log('newSpot',$scope.newSpot)
-            // var location = document.getElementById("location-input").value
-            // var location = $scope.newSpot.street + " "+  $scope.newSpot.city + " "+$scope.newSpot.state + " "+  $scope.newSpot.country + " "+  $scope.newSpot.zip_code
+        } else {
             var location = $scope.newSpot.street + " "+  "San Francisco" + " "+ "California" + " "+  "United States" + " "+  $scope.newSpot.zip_code
-
-            console.log('location************',location)
             var user = user_factory.log_get_user();
-            console.log('user',user)
-            user_factory.geocode($scope.newSpot, location, user, function(data)
-            {
-              console.log('data************',data)
-              // $scope.dates = 'data'
-              console.log($scope.dates)
+            user_factory.geocode($scope.newSpot, location, user, function(data) {
               $scope.address = 'Your address'+ ' " ' + data + ' " '
               $location.url('/spots');
             })
         }
-        
-
-
-      
       }
 
 //show all the spots
-         $scope.index_spot = function(){
-        console.log('inside index_spot')
-        user_factory.index_spot(function(data){
+      $scope.index_spot = function() {
+        user_factory.index_spot(function(data) {
           $scope.spots = data;
           $scope.spot = {};
-          console.log("index spot:")
-          console.log($scope.spots)
-
         })
       }
 
       $scope.index_spot();
 
-      // function setSpots(data)
-      // {
-      //   $scope.Spots = data;
-      // }
-
-
-
-
-      $scope.create_renter_by_id = function()
-      {
-        console.log('INSIDE create_renter_by_id')
-        console.log('$scope.newRenter',$scope.newRenter)
-        if($scope.newRenter.contact.length > 5)
-        {
-          console.log("inside create_renter_by_id if statement")
+      $scope.create_renter_by_id = function() {
+        if($scope.newRenter.contact.length > 5) {
           $scope.error = {};
-          console.log($scope.newRenter)
-
           function toDateStr(ts) {
               let dataF = new Date();   dataF.setTime(ts);
               let strDataF = dataF.toLocaleString();
               return strDataF;
-        }
+          }
 
           // then use it in your aggregation:
           // db.Collection.aggregate([{ 
@@ -421,104 +278,48 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
           // return doc;
           // })
           var firstdate = toDateStr($scope.newRenter.arriving_on)
-          console.log(firstdate)
           var seconddate = toDateStr($scope.newRenter.departing_on)
-          console.log(seconddate)
-
 
           $scope.differenceInDays = function() {
+            var dt1 = firstdate.split('/')
+            var dt2 = seconddate.split('/')
+            var x = dt1[2].split(',')[0]
+            var y = dt2[2].split(',')[0]
+            dt1.pop()
+            dt2.pop()
+            dt1.push(x)
+            dt2.push(y)
+            one = new Date(dt1[2], dt1[0]-1, dt1[1]),
+            two = new Date(dt2[2], dt2[0]-1, dt2[1]);
 
-              var dt1 = firstdate.split('/')
-              
-                var   dt2 = seconddate.split('/')
-              
-              var x = dt1[2].split(',')[0]
-              console.log(dt2)
-              var y = dt2[2].split(',')[0]
-console.log('ppppppp')
-              dt1.pop()
-              dt2.pop()
-              dt1.push(x)
-              dt2.push(y)
-
-              console.log(x)
-                  // dt1 = dtt1[2].split(','),
-                  // dt2 = dtt2[2].split(',')
-                  // dt1.pop()
-                  // dt2.pop()
-                  console.log(dt1)
-                  one = new Date(dt1[2], dt1[0]-1, dt1[1]),
-                  two = new Date(dt2[2], dt2[0]-1, dt2[1]);
-
-              var millisecondsPerDay = 1000 * 60 * 60 * 24;
-              var millisBetween = two.getTime() - one.getTime();
-              var days = millisBetween / millisecondsPerDay;
-              console.log(Math.floor(days))
-              return Math.floor(days);      
-        };
-          $scope.price = 6 *  ($scope.differenceInDays()+1)
-
-
+            var millisecondsPerDay = 1000 * 60 * 60 * 24;
+            var millisBetween = two.getTime() - one.getTime();
+            var days = millisBetween / millisecondsPerDay;
+            return Math.floor(days);      
+          };
           
+          $scope.price = 6 *  ($scope.differenceInDays()+1)
           var user = user_factory.log_get_user();
-          console.log('*************user',user)
-          user_factory.create_renter_by_id($routeParams.id,$scope.newRenter,user,function(data)
-          {
-            console.log("routeParams.id", $routeParams.id)
-            console.log('data',data)
-
-             if($('#1').css('display')!='none'){
+          user_factory.create_renter_by_id($routeParams.id,$scope.newRenter,user,function(data) {
+            if($('#1').css('display')!='none') {
               $('#2').html("<h3>You have successfully booked and payed $ " + $scope.price + "</h3>").show().siblings('div').hide();
-              }else if($('#2').css('display')!='none'){
-              $('#1').show().siblings('div').hide();
-              }
-            // $location.url('/success')
-        //     $scope.renter = data;
-        //     // console.log("Data:")
-        //     setRenter(data);
-        //     // console.log(data)
-        //     $scope.spots.push(data)
-        //     // console.log($scope.questions[15])
-        //     // loop through questions
-        //     var spot;
-        //     for (var x=0; x<$scope.spots.length;x++)
-        //     {
-        //       if($scope.spots[x]._id == data._spot)
-        //       {
-        //         spot = $scope.spots[x];
-        //       }
-        //     }
-        //     // console.log('question',question)
-        //     // find question that matches data._question
-        //     // console.log(question._answers)
-        //     // push answer (data) to that question
-        //    spot._renters.push(data);
-        //     // location.reload()
-         
+              } else if ($('#2').css('display')!='none') {
+                  $('#1').show().siblings('div').hide();
+                }
           })
-        }
-        else
-        {
-          $scope.error = {message: 'Your contact must be 10 characters long!'};
-        }
-
-      //    $scope.$watch('newAnswer', function () {
-      //   // console.log('QQQQQQQQQQQQQ',$scope.newAnswer); 
-      // });
+        } else {
+            $scope.error = {message: 'Your contact must be 10 characters long!'};
+          }
       }
 
-      $scope.get_spot_by_id = function()
-      {
-        // console.log('controller--get_question_by_id');
-        user_factory.get_spot_by_id($routeParams.id,function(data)
-        {
+      $scope.get_spot_by_id = function() {
+        user_factory.get_spot_by_id($routeParams.id,function(data) {
           $scope.spot = data;
         })
       }
 
       $scope.get_spot_by_id();
     } 
-    // end of function($scope,$cookies,$location,$anchorScroll,$routeParams,user_factory)
 
 ]);
 

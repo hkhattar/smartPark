@@ -13,53 +13,19 @@ module.exports = {
 
     	console.log("delete function sever controller users")
     	console.log('POST DATA',req.body)
-    	// res.cookie('dash_user', data);
-    	// console.log('!!!!!!!!',req.cookies.dash_user._spots) 
-    	// console.log('iii', typeOf req.cookies.dash_user._spots)
-
-
-  //   	var array = req.cookies.dash_user._spots;
-  //   	for(var i = array.length - 1; i >= 0; i--) {
-  //   		if(array[i] === req.body._id) {
-  //      			// array.splice(i, 1);
-  //      			for (var j=i; j<array.length; j++)
-  //      			{
-  //      				// console.log('pppppppi',array[i])
-       			
-  //      			// array.pop();
-  //      			console.log('array[j]',array[j])
-  //      			array[j] = array[j+1]
-  //      			console.log('array[j]',array[j])
-
-  //      			}
-       			
-  //   		}
-		// }
-
-
-    	// Spot.findOne({_id:req.body._id}, function(err,spot){
-    	// 	console.log('spot',spot)
-
-    	// })
 	Spot.remove({_id: req.body._id}, function(err, spot){
-				if(err){
+				if(err) {
 					console.log(err);
 				}
-				else{
+				else {
 					res.json(spot);
 				}
 			})
-    	 
-
-
     },
-
-
 
 	index_spots: function(req,res){
 
-    	  Spot.find({ available:1//attempt to find an available Spot in the DB 
-						
+    	 Spot.find({ available:1//attempt to find an available Spot in the DB 
 					}, (err, data) => {
 					if (err) { //if an error is returned...
 						console.log('error');
@@ -67,50 +33,18 @@ module.exports = {
 						if (data) { //and a user is returned (data is not null)...
 							spots = data
 							res.json(spots)
-								  }
-							};
-						})
+						}
+					  };
+		})
     },
 	create: function(req,res)
 	{
-		// console.log('inside spot create server controller')
-		// console.log('POST DATA',req.body);
-		// console.log('helo')
-
-		
-        // axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
-        //   params:{
-        //   address: req.body.spot,
-        //   key: 'AIzaSyBgKwURsd4XhAq0GBTGTDOToFu1S_lFwkk'
-        //   } // end of params
-        // })// end of axios.get
-        // .then(function(response)
-        // {
-        //   //log full response
-        //   // callback(response)
-          
-        //   console.log(response.data.results[0].formatted_address,'response')
-        //   var lat = response.data.results[0].geometry.location.lat;
-        // 	var lng = response.data.results[0].geometry.location.lng;
-        // 	console.log(lat,lng)
-        // })
-
-        // console.log('address*******************', address)
-
 		User.findOne({_id:req.body.user._id},function(err,user){
 			var spot = new Spot({available:1, contact:req.body.spot.contact,street:req.body.spot.street, house_number:req.body.spot.house_number,license:req.body.spot.license, zip_code:req.body.spot.zip_code, type_of_space:req.body.spot.type_of_space, number_of_spaces:req.body.spot.number_of_spaces,owner_vehicle_choice:req.body.spot.owner_vehicle_choice, instructions:req.body.spot.instructions, start_date:req.body.spot.start_date, end_date:req.body.spot.end_date, start_time:req.body.spot.start_time, end_time:req.body.spot.end_time, license:req.body.spot.license, lat:req.body.lat, lng:req.body.lng, });
-			
-			// var date = new Date({})
 
 			spot._user = user._id;
-			// spot.owner = user.f_name
 			spot.f_name = user.f_name
 			spot.l_name = user.l_name
-
-			// var date = currentDate()
-			// var date = Date.now()
-			// console.log('date',date)
-			// console.log(typeof(req.body.spot.start_date))
 
 //GET DATES ARRAY FROM START DATE TO END DATE
 			Date.prototype.addDays = function(days) 
@@ -132,26 +66,7 @@ module.exports = {
     			return dateArray;
 			}
 
-//CONVERT UNIX TIMESTAMP TO READABLE DATE/TIME
-			// var timestamp = 1301090400,
-			// date = new Date(timestamp * 1000),
-			// datevalues = [
-   // 				date.getFullYear(),
-   // 				date.getMonth()+1,
-   // 				date.getDate(),
-   // 				date.getHours(),
-   // 				date.getMinutes(),
-   // 				date.getSeconds(),
-			// 	];
-			// 	alert(datevalues);
-			
-			// var dates = getDates(req.body.spot.start_date,req.body.spot.end_date)
-			// console.log('dates',dates)
-
-			// console.log("spot._")
 			user._spots.push(spot);
-			// user._spots = 
-
 			spot.save(function(err)
 			{
 				user.save(function(err)
@@ -162,23 +77,13 @@ module.exports = {
 					}
 					else
 					{
-						console.log('spot*****************************',spot)
-						// var dates = getDates(spot.start_date,spot.end_date)
-						// console.log(dates)
 						res.json(spot);
-						// res.json({spot:spot, dates:dates})
 					}
 
 				})
 				
 			})
-
-
 		})
-		
-	
-
-		
 	},
 
 
@@ -187,24 +92,17 @@ module.exports = {
 			res.json(result);
 		})
 		.populate('_renters').exec(function(err,spot){
-			// console.log('error', err);
 		})
 
 	},
 
 	zip_code: function(req,res){
-		console.log('post data', req.body)
-		// { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] }
 		var date1 = new Date(req.body.start_date);
 		var date2 = new Date(req.body.end_date)
 		var timeDiff = Math.abs(date2.getTime() - date1.getTime());
 		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-		console.log('diffDays',diffDays)
 		var price = diffDays * 6
-		console.log('price',price)
 		Spot.find({$and: [{zip_code:req.body.zip_code},{owner_vehicle_choice:req.body.owner_vehicle_choice},{available:1}]},function(err,result){
-			// console.log('result*********************',result)
-			// User.findOne({_id:result._user})
 			res.json(result);
 		})
 		.populate('_renters').exec(function(err,spot){

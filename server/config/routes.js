@@ -4,15 +4,11 @@ var renters = require('../controllers/renters.js')
 
 module.exports = function(app){
 	app.get('/', function(req, res) {
-		// console.log('/users')
    		users.index(req,res)
-    
 	});
 
 	app.get('/index', function(req, res) {
-		// console.log('/users')
    		users.index(req,res)
-    
 	});
 
 	app.post('/register', users.register);
