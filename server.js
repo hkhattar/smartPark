@@ -6,16 +6,15 @@ var cookie = require('cookie');
 var path = require('path');
 // Create an Express App
 var app = express();
-// Require body-parser (to receive post data from clients)
 // var bcrypt = require('bcrypt');
+// Require body-parser (to receive post data from clients)
 var bodyParser = require('body-parser');
 var axios = require('axios')
 // new code:
 var session = require('express-session');
 // var moment = require('moment');
 // var accountSid = 'PN2771eecd9f277e0cd2f94858aa126764'; // Your Account SID from www.twilio.com/console
-var accountSid = 'AC78353e9a712677f00a381f97a8d13765'
-var authToken = '28bd31638cb4b1416f568d25fb76f913';   // Your Auth Token from www.twilio.com/console
+  // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
@@ -25,10 +24,8 @@ app.use(cookieParser());
 // more new code:
 app.use(session({secret: 'codingdojorocks'}));  // string for encryption
 
-
 // require the mongoose configuration file which does the rest for us
 require('./server/config/mongoose.js');
-
 
 // Integrate body-parser with our App
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,7 +69,7 @@ app.get('/testtwilio', function(req,res)
 var routes_setter = require('./server/config/routes.js')
 routes_setter(app);
 
-// Setting our Server to Listen on Port: 8000
+// Setting our Server to Listen on Port: 8019
 app.listen(8019, function() {
     console.log("listening on port 8019 smart park");
 })

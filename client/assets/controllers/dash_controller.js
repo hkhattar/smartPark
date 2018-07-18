@@ -15,8 +15,7 @@ app.controller('dash_controller', ['$scope','$cookies','$location','$routeParams
       	}
       	
 
-      									})
-
+      })
   	}
   	
   ]);

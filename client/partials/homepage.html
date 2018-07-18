@@ -1,16 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Parallax Template - Materialize</title> -->
 
-  <!-- CSS  -->
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body> -->
   <nav  class=" teal lighten-2" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">park@Ease </a>
@@ -22,100 +10,46 @@
         <li><a href="#/spots">Reserve Location</a></li>
 
         <li><a  href="/logout"><i class="large material-icons">insert_chart</i></a></li>
-
-        <!-- <li><a ng-click="scrollTo('foo')">Foo</a></li>  -->
-        <!-- <li> <a href="#anchorLinkID" target="_self">Go to inpage section</a></li>  -->
-
-
       </ul>
-
-     <!--  <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul> -->
-      <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
     </div>
   </nav>
-
-<!-- <div style="display: inline-block"> -->
-
-
-<!-- <div class="parallax-container"> -->
-      <!-- <div class="parallax" id="background4"></div> -->
- 
 
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
       <h1 class="header center orange-text">Parking has a NEW FRIEND</h1>
-
     </div>
-  </div>
+</div>
 
 <div id='parent_div_1'>
   <div class ='child_div_1'>
     <div class="container">
         <div class="row">
-          
-
            <div class="col s3 m3 offset-m0">
-      <div class="card">
-        <div class="card-content">
-         
-          <form>
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Email" id="email" type="text" class="validate" ng-model='loginUser.email' name="email">
-                <label for="email" class="active"></label>
+            <div class="card">
+              <div class="card-content">
+                <form>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Email" id="email" type="text" class="validate" ng-model='loginUser.email' name="email">
+                      <label for="email" class="active"></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Password" id="password" type="password" class="validate" ng-model='loginUser.password' name="password">
+                      {{ error.message }}
+                      <label for="password" class="active"></label>
+                    </div>
+                     <p ng-repeat="error in logErrors">{{ error }}</p>
+                  </div>
+                  <input type="submit" class="btn" value="LOGIN" ng-click='login()'>
+                </form>
               </div>
+              <div class="card-action"></div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Password" id="password" type="password" class="validate" ng-model='loginUser.password' name="password">
-                {{ error.message }}
-                <label for="password" class="active"></label>
-              </div>
-               <p ng-repeat="error in logErrors">{{ error }}</p>
-            </div>
-            <input type="submit" class="btn" value="LOGIN" ng-click='login()'>
-
-          </form>
-         
-        </div>
-        <div class="card-action">
-          <!-- <input type="submit" class="btn" value="LOGIN" ng-click='create_new_user()'> -->
-        <!--   <p>Don't have an account? 
-        <a href="#/sign_up">Sign Up</a></p>
-        <br> -->
-        </div>
-        
-
-      </div>
-    </div>
-
-
- <!-- </div> -->
- <!-- </div> -->
- <!-- </div> -->
- <!-- </div> -->
-
-<!-- </div>  -->
-
-<!-- <div style="display: inline-block"> -->
-
-<!-- <div id='parent_div_1'> -->
-  <!-- <div class ='child_div_1'> -->
-    <!-- <div class="container"> -->
-        <!-- <div class="row"> -->
-      
-
-      <!--   <div class="col s11 m6 offset-m0">
-          <div class="card">
-
           </div>
-        </div> -->
 
-<!--  <div id="foo">Here you are</div>
- <div id="_self">hello</div> -->
           <div class="col s3 m3 offset-m3">
               <div class="card">
                 <div class="card-content">
@@ -168,9 +102,6 @@
                 </div>
                 <div class="card-action">
                  
-                <!--    <p>Already have an account? 
-                  <a href="#/log_in">Sign In</a></p>
-                  <br> -->
                 </div>
                
 
@@ -179,26 +110,12 @@
 
       </div>
     </div>
-    <!-- </div> -->  
-    <!-- </div> -->
+
   </div> <!-- child div -->
  
 </div> <!-- parent div -->
 
-<!-- </div> -->
-
-
-
- <!-- </div> -->
-
-
-
-
-
-
 <br>
-
-
 
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">

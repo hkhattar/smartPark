@@ -23,7 +23,6 @@ module.exports = {
     },
 	register: (req, res) =>{
 		var success = false
-		// console.log('user_id',user.id)
 		// var hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(
 		// 			8)); //hash the password
 		
@@ -66,7 +65,7 @@ module.exports = {
 										{ //if there's an error upon saving session...
 											console.log(err2);
 										} //req.session.save if
-													     });
+									});
 									res.json(data)
 								
 								}
@@ -76,43 +75,6 @@ module.exports = {
 						}//end of if there is not error
 				})//end of user.find one
 	},
-		// login: (req, res) => { //logs user in based on entered login information
-			
-		// 	var success = true
-		// 	console.log('req.body',req.body)
-		// 	User.findOne({ //uses entered email to search for user in DB
-		// 		email: req.body.email
-		// 	}, (err, data) => {
-		// 		if (err) { //if an error is thrown (model validations, etc)...
-		// 			res.json(err); //return error to client-side
-		// 		} else { //if there is no error...
-		// 			if (!data) { //but no user information is retrieved...
-		// 				success = false
-		// 				res.json({
-		// 					success
-		// 					// 'errorsFront': ["Email or password incorrect"] //return this error to client-side
-		// 				});
-		// 			} else { //if user information IS retrieved...
-		// 				console.log('req.body.password',req.body.password)
-		// 				console.log('data.password',data.password)
-		// 				if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
-		// 					res.cookie('dash_user', data);
-		// 					req.session.user = data
-		// 					// res.redirect('/dashboard')
-		// 					res.json(data)
-
-		// 					// res.json(data); //return the user information to client-side
-		// 				} else { //if password entered does NOT match that as retrieved from the DB...
-		// 					success = false
-		// 					res.json({ //return this error to client-side
-		// 						success
-		// 					});
-		// 				// } //password no matchy else
-		// 			} //if user information is retrieved else
-		// 		} //if there is no error when searching for user else
-		// 	}
-		// 	}); //User.findOne
-		// },
 
 		login: (req, res) => { //logs user in based on entered login information
 			
@@ -126,7 +88,6 @@ module.exports = {
 				} else { //if there is no error...
 					if (!data) { //but no user information is retrieved...
 						success = false
-						console.log('success',success)
 
 						res.json({
 							'success' : success,
@@ -134,20 +95,12 @@ module.exports = {
 						});
 						// res.json({success})
 					} else { //if user information IS retrieved...
-						console.log('req.body.password',req.body.password)
-						console.log('data.password',data.password)
 						if (req.body.password === data.password) { //assuming the password entered matches that in the DB for that user...
 							res.cookie('dash_user', data);
-							
-							console.log('data+++++++++++++++',data)
-							console.log('success',success)
-
 							res.json(data); //return the user information to client-side
 
 						} else { //if password entered does NOT match that as retrieved from the DB...
 							success = false
-							console.log('success',success)
-							// res.json({success})
 							res.json({ //return this error to client-side
 								'success' : success,
 								'errorsFront': ["Email or Password incorrect"]
@@ -161,15 +114,10 @@ module.exports = {
 
 	checkSesh: (req, res) =>{ //returns session to client-side (null if it does not exist)
 			res.json(req.cookies.dash_user);
-			// console.log('session',req.session.user)
-			console.log('Cookies: ', req.cookies.dash_user);
-
 		},
 
 	logout: (req, res) => { //logs user out
 		res.clearCookie('dash_user');
-		// res.redirect('/index'); //redirects user to root
-		console.log('logout')
 		res.redirect('/#/sign_up');
 	},
 

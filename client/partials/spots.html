@@ -138,33 +138,6 @@
             </div>
           </nav>
 					<table id="searchTextResults" class='highlight'>
-						<!-- <thead> -->
-							<!-- <tr> -->
-								<!-- <th>Contact</th> -->
-								<!-- <th>Street</th> -->
-								<!-- <th>House Number</th> -->
-								<!-- <th>Zip Code</th> -->
-								<!-- <th>Country</th> -->
-								<!-- <th>State</th> -->
-								<!-- <th>City</th> -->
-								<!-- <th>Type of Space</th> -->
-								<!-- <th>Number of spaces</th> -->
-								<!-- <th>Owner Vehicle Choice</th> -->
-								<!-- <th>Instructions</th> -->
-								<!-- <th>Start Date</th> -->
-								<!-- <th>End Date</th> -->
-								<!-- <th>Start Time</th> -->
-								<!-- <th>End Time</th> -->
-								<!-- <th>Driver's License</th> -->
-								<!-- <th>Longitude</th> -->
-								<!-- <th>Latitude</th> -->
-                <!-- <th>Actions</th> -->
-                <!-- <th>Spot id</th> -->
-                <!-- <th>Spot owner</th> -->
-                <!-- <th>Actions</th> -->
-								
-							<!-- </tr> -->
-						<!-- </thead> -->
 						<tbody>
 							<tr>
 								
@@ -181,35 +154,7 @@
                 <p> {{spot.instructions}} </p>
                  <br>
                 <button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button>
-                </td>
-								<!-- <td>{{spot.house_number}}</td> -->
-								<!-- <td>{{spot.zip_code}}</td> -->
-								<!-- <td>{{spot.country}}</td> -->
-								<!-- <td>{{spot.state}}</td> -->
-								<!-- <td>{{spot.city}}</td> -->
-								<!-- <td>{{spot.type_of_space}}</td> -->
-								<!-- <td>{{spot.number_of_spaces}}</td> -->
-								<!-- <td>{{spot.owner_vehicle_choice}}</td> -->
-								<!-- <td>{{spot.instructions}}</td> -->
-								<!-- <td>{{spot.start_date | date}}</td> -->
-                <!-- <td ng-bind="spot.date | date: 'MMMM d, y'"></td> -->
-								<!-- <td>{{spot.end_date | date}} </td> -->
-								<!-- <td>{{spot.start_time | date:'h:mm' }}</td> -->
-								<!-- <td>{{spot.end_time | date:'h:mm' }}</td> -->
-								<!-- <td>{{spot.license}}</td> -->
-								<!-- <td>{{spot.lng}}</td> -->
-								<!-- <td>{{spot.lat}}</td> -->
-                <!-- <td><a href="#/spots/{{spot._id}}"  >Book</a></td> -->
-                <!-- <td>{{spot._id}}</td> -->
-                <!-- <td>{{spot._user}}</td> -->
-                <!-- <td>{{dates}}</td> -->
-                 <!-- <span ng-show="spot._user == dash_user._id">Cancelll</span> -->
-                <!-- <td><span>{{showSomething(spot._user,dash_user._id)}}</span></td> -->
-
-                <!-- <td ng-if="spot._user == dashuser._id"><button ng-click="Delete(appt)">Cancel</button></td> -->
-								<!-- {{sopt._user === dashuser._id ? "it's true" : "it's false"}} -->
-                <!-- <td><button ng-click="Delete_spot(spot)" ng-show="dash_user._id == spot._user">Remove your spot</button></td> -->
-            
+                </td>            
 							</tr>
 
 						</tbody>

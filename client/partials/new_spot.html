@@ -21,33 +21,7 @@
     </div>
   </nav>
 
-<!-- {{log_get_user()}} -->
 <h5 class='right-align'> <pre>{{dash_user.f_name}}   </pre>    </h5>
-
-  
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>My Geocode</title> -->
-	<!-- axiom -->
-	
-	<!-- <script src="http://maps.googleapis.com/maps/api/js"> </script> -->
-<!-- </head>
-
-<body> -->
-
-<!-- contact
-street
-house_number
-city
-state
-country
-zip_code
-type_of_space
-number_of_spaces
-instructions -->
-
 <div id='parent_div_1'>
   <div class ='child_div_1'>
     <div class="container">
@@ -57,9 +31,7 @@ instructions -->
            <div class="col s6 m6 offset-m0">
       <div class="card">
         <div class="card-content">
-<!-- <div id='parent_div_1'> -->
-  <!-- <div class ='child_div_1'> -->
-<!-- <div class = 'container'> -->
+
 <h2 id="text-center">Please fill out the form to get started listing your spot: </h2>
 
  <form >
@@ -88,9 +60,6 @@ instructions -->
                   <option value="Car Park">Car Park</option>
                </select>
             </div>
-      <!-- <input placeholder="Type of space" id="type_of_space" type="text" class="validate" ng-model='newSpot.type_of_space'> -->
-      <!-- <input placeholder="Number of spaces" min="1" id="number_of_spaces" type="number" class="validate" ng-model='newSpot.number_of_spaces'> -->
-      <!-- <input placeholder="Vehicle Choice" id="owner_vehicle_choice" type="text" class="validate" ng-model='newSpot.owner_vehicle_choice'> -->
        <div class="row">
                <label>Vehicle Choice</label>
                <select class="browser-default" ng-model='newSpot.owner_vehicle_choice'>
@@ -100,45 +69,15 @@ instructions -->
                   <option value="Truck">Truck</option>
                </select>
         </div>
-        <!-- <br> -->
-        <!-- <br> -->
         <div class="row">
           <div class="input-field col s12">
            <!-- <label for="textarea1">Description/Instructions</label> -->
         <textarea id="instructions"  placeholder="Description/Instructions" ng-model="newSpot.instructions" class="materialize-textarea" data-length="120"></textarea>
         
           </div>
-      <!-- <input placeholder="Instructions/Description" id="instructions" type="text" class="validate" ng-model='newSpot.instructions'> -->
-      <!-- Start Date: <input placeholder="Start Date" id="start_date" type="date" class="validate" ng-model='newSpot.start_date'> -->
-      <!-- End Date: <input placeholder="End Date" id="end_date" type="date" class="validate" ng-model='newSpot.end_date'> -->
-      <!-- <div class="error">{{error.date}}</div> -->
-      <!-- <br> -->
-
-<!-- 
-<input data-date-time-input="YYYY-MMM-DD" /> -->
-
-
-
-      <!-- Start Time: <input data-date-time-input="YYYY-MMM-DD" placeholder="9:00 AM" id="start_time" type="time" class="validate" ng-model='newSpot.start_time'>
-
-      
-      End Time: <input placeholder="5 PM" id="end_time" type="time" class="validate" ng-model='newSpot.end_time'>
- -->
 
     <div class="error">{{error.time}}</div>  
       <br>
-
-
-
-
-
-       <!-- {{address}} -->
-       <!-- <input placeholder='Street' type="text" id="street" class="form-control form-control-lg">
-       <input placeholder='Route' type="text" id="route" class="form-control form-control-lg">
-       <input type="hidden" id='city' name="city" value="San Jose">
-       <input type="hidden" id='state' name="state" value="CA">
-        <input placeholder='Zip Code' type="text" id="zip_code" class="form-control form-control-lg"> -->
-      
       
       <input placeholder='Valid Driver License Number for Address Proof' type="text" id="license" class="validate" ng-model='newSpot.license'>
            <div class="error">{{error.driver_license}}</div> 
@@ -153,8 +92,6 @@ instructions -->
       <br>
 	<input type="submit"  value="Rent your spot" ng-click='geocode()'>    </form>
 	<div class='card-block' id = "formatted-address">	</div>
-	<!-- <input type="text" id="formatted-address" onchange="geocode()"/> -->
-
 	<div class= 'card-block' id= "address-components"></div>
 	<div class= 'card-block' id= "geometry"></div>
 

@@ -271,12 +271,6 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
               return strDataF;
           }
 
-          // then use it in your aggregation:
-          // db.Collection.aggregate([{ 
-          // }]).map( function(doc) { 
-          // doc['date'] = toDateStr(doc.timestamp);
-          // return doc;
-          // })
           var firstdate = toDateStr($scope.newRenter.arriving_on)
           var seconddate = toDateStr($scope.newRenter.departing_on)
 
@@ -297,7 +291,7 @@ app.controller('user_controller', ['$scope','$cookies','$location','$anchorScrol
             var days = millisBetween / millisecondsPerDay;
             return Math.floor(days);      
           };
-          
+
           $scope.price = 6 *  ($scope.differenceInDays()+1)
           var user = user_factory.log_get_user();
           user_factory.create_renter_by_id($routeParams.id,$scope.newRenter,user,function(data) {
