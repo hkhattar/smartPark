@@ -13,8 +13,8 @@ var axios = require('axios')
 // new code:
 var session = require('express-session');
 // var moment = require('moment');
-// var accountSid = 'PN2771eecd9f277e0cd2f94858aa126764'; // Your Account SID from www.twilio.com/console
-  // Your Auth Token from www.twilio.com/console
+
+
 
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
